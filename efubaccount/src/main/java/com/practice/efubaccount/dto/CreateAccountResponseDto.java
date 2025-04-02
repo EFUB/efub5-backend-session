@@ -8,17 +8,18 @@ import lombok.Getter;
 
 @Builder @Getter
 public class CreateAccountResponseDto {
-//    private Long id;
-//    private String nickname;
-//    private String email;
-//    private String bio;
-//
-//    public static CreateAccountResponseDto from(Account account) {
-//        return CreateAccountResponseDto.builder()
-//                .id(account.getAccountId())
-//                .nickname(account.getNickname())
-//                .email(account.getEmail())
-//                .bio(account.getBio())
-//                .build();
-//    }
+
+    private Long id;
+    private String nickname;
+    private String email;
+    private String bio;
+
+    public static CreateAccountResponseDto from(Account account) { // db에서 aacount를 받아서 dto 꼴로 바꿔줌
+        return CreateAccountResponseDto.builder()
+                .id(account.getAccountId())
+                .nickname(account.getNickname())
+                .email(account.getEmail())
+                .bio(account.getBio())
+                .build();
+    }
 }
