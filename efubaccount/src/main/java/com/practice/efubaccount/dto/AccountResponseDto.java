@@ -6,18 +6,19 @@ import lombok.Getter;
 
 // Account 조회 후 응답 DTO
 
-@Builder @Getter
+@Builder
+@Getter
 public class AccountResponseDto {
 
-//    private String nickname;
-//    private String email;
-//    private String bio;
-//
-//    public static AccountResponseDto from(Account account) {
-//        return AccountResponseDto.builder()
-//                .nickname(account.getNickname())
-//                .email(account.getEmail())
-//                .bio(account.getBio())
-//                .build();
-//    }
+    private String nickname;
+    private String email;
+    private String bio;
+
+    public static AccountResponseDto from(Account account) {
+        return AccountResponseDto.builder()
+                .nickname(account.getNickname())
+                .email(account.getEmail())
+                .bio(account.getBio())
+                .build();
+    }// 프롬메소드. 어카운트 객체를 어카운드 리스폰드dto로 매핑
 }
