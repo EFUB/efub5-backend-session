@@ -13,19 +13,12 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class AccountsService {
 
     private final AccountsRepository accountsRepository;
 
-    // 회원 단건 조회
-    @Transactional
-    public AccountResponseDto getAccount(Long accountId) {
-        Account account = accountsRepository.findByAccountId(accountId).orElseThrow(()->new IllegalArgumentException("Account with id " + accountId + " does not exist"));
-        return AccountResponseDto.from(account);
-    }
-
     // 회원 생성
-    @Transactional
     public CreateAccountResponseDto createAccount(CreateAccountRequestDto requestDto) {
         if(accountsRepository.existsByEmail(requestDto.getEmail())) {
             throw new IllegalArgumentException("Email already exists");
@@ -35,8 +28,14 @@ public class AccountsService {
         return CreateAccountResponseDto.from(savedAccount);
     }
 
+    // 회원 단건 조회
+    @Transactional(readOnly = true)
+    public AccountResponseDto getAccount(Long accountId) {
+        Account account = accountsRepository.findByAccountId(accountId).orElseThrow(()->new IllegalArgumentException("Account with id " + accountId + " does not exist"));
+        return AccountResponseDto.from(account);
+    }
+    
     // 프로필(자기소개) 수정
-    @Transactional
     public AccountResponseDto updateAccount(Long accountId, BioUpdateRequestDto requestDto) {
         Account account = accountsRepository.findByAccountId(accountId).orElseThrow(()->new IllegalArgumentException("Account with id " + accountId + " does not exist"));
         account.updateBio(requestDto.getBio());
@@ -44,14 +43,12 @@ public class AccountsService {
     }
 
     // 회원 논리적 삭제 (status 변경)
-    @Transactional
     public void deleteAccount(Long accountId) {
         Account account = accountsRepository.findByAccountId(accountId).orElseThrow(()->new IllegalArgumentException("Account with id " + accountId + " does not exist"));
         account.changeStatus(AccountStatus.DEACTIVATED);
     }
 
     // 회원 물리적 삭제
-    @Transactional
     public void physicalDeleteAccount(Long accountId) {
         Account account = accountsRepository.findByAccountId(accountId).orElseThrow(()-> new IllegalArgumentException("Account with id " + accountId + " does not exist"));
         accountsRepository.delete(account);
