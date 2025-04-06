@@ -9,30 +9,62 @@ import com.practice.efubaccount.entity.AccountStatus;
 import com.practice.efubaccount.repository.AccountsRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
 public class AccountsService {
 
-//    private final AccountsRepository accountsRepository;
-//
-//    // 회원 단건 조회
-//    public AccountResponseDto getAccount(Long accountId) {
-//    }
-//
-//    // 회원 생성
-//    public CreateAccountResponseDto createAccount(CreateAccountRequestDto requestDto) {
-//    }
-//
-//    // 프로필(자기소개) 수정
-//    public AccountResponseDto updateAccount(Long accountId, BioUpdateRequestDto requestDto) {
-//    }
-//
-//    // 회원 논리적 삭제 (status 변경)
-//    public void deleteAccount(Long accountId) {
-//    }
-//
-//    // 회원 물리적 삭제
-//    public void physicalDeleteAccount(Long accountId) {
-//    }
+    private final AccountsRepository accountsRepository;
+
+    // 회원 단건 조회
+    @Transactional
+    public AccountResponseDto getAccount(Long accountId) {
+    Account account = accountsRepository.findByAccountId(accountId)
+            .orElseThrow(() -> new IllegalArgumentException("해당 회원을 찾을 수 없습니다."));
+
+    return AccountResponseDto.from(account);
+
+    }
+
+    // 회원 생성
+    @Transactional
+    public CreateAccountResponseDto createAccount(CreateAccountRequestDto requestDto) {
+        // 이메일 중복 검사
+        if(accountsRepository.existsByEmail(requestDto.getEmail())) {
+            throw new IllegalArgumentException("Email already exists" + requestDto.getEmail());
+        }
+        Account account = requestDto.toEntity();
+        Account savedAccount = accountsRepository.save(account);
+
+        return CreateAccountResponseDto.from(savedAccount);
+    }
+
+    // 프로필(자기소개) 수정
+    @Transactional
+    public AccountResponseDto updateAccount(Long accountId, BioUpdateRequestDto requestDto) {
+        Account account = accountsRepository.findByAccountId(accountId)
+                .orElseThrow(() -> new IllegalArgumentException("해당 회원을 찾을 수 없습니다."));
+        account.updateBio(requestDto.getBio());
+        Account savedAccount = accountsRepository.save(account);
+
+        return AccountResponseDto.from(account);
+    }
+
+    // 회원 논리적 삭제 (status 변경)
+    @Transactional
+    public void deleteAccount(Long accountId) {
+        Account account = accountsRepository.findByAccountId(accountId)
+                .orElseThrow(() -> new IllegalArgumentException("해당 회원을 찾을 수 없습니다."));
+        account.changeStatus(AccountStatus.DEACTIVATED);
+        accountsRepository.save(account);
+    }
+
+    // 회원 물리적 삭제
+    @Transactional
+    public void physicalDeleteAccount(Long accountId) {
+        Account account = accountsRepository.findByAccountId(accountId)
+                .orElseThrow(() -> new IllegalArgumentException("해당 회원을 찾을 수 없습니다."));
+        accountsRepository.delete(account);
+    }
 }
