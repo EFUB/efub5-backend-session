@@ -12,32 +12,41 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Account {
 
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    private Long accountId;
-//
-//    // 회원 이메일
-//
-//    // 회원 비밀번호
-//
-//    // 회원 닉네임
-//
-//    // 회원 자기소개(bio), default 값은 "안녕하세요!"
-//
-//    // 회원 상태
-//
-//    @Builder
-//    public Account(String email, String password, String nickname) {
-//        this.email = email;
-//        this.password = password;
-//        this.nickname = nickname;
-//    }
-//
-//    public void updateBio(String bio) {
-//        this.bio = bio;
-//    }
-//
-//    public void changeStatus(AccountStatus status) {
-//        this.status = status;
-//    }
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long accountId;
+
+    // 회원 이메일
+    @Column(unique = true) //이메일 한개
+    private String email;
+
+    // 회원 비밀번호
+    @Column(nullable=false)
+    private String password;
+
+    // 회원 닉네임
+    @Column(nullable = false, updatable = false)
+    private String nickname;
+
+    // 회원 자기소개(bio), default 값은 "안녕하세요!"
+    private String bio="안녕하세요!";
+
+    // 회원 상태
+    @Enumerated(EnumType.STRING)
+    private AccountStatus status = AccountStatus.ACTIVE;
+
+    @Builder   //setter를 지양하고 builer를 주로 사용
+    public Account(String email, String password, String nickname) {
+        this.email = email;
+        this.password = password;
+        this.nickname = nickname;
+    }
+
+    public void updateBio(String bio) {
+        this.bio = bio;
+    }
+
+    public void changeStatus(AccountStatus status) {
+        this.status = status;
+    }
 }
