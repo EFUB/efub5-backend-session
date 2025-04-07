@@ -5,11 +5,11 @@ package com.practice.blog.post.service;
 //import com.practice.blog.global.exception.BlogException;
 //import com.practice.blog.global.exception.ExceptionCode;
 //import com.practice.blog.post.domain.Post;
+//import com.practice.blog.post.dto.summary.PostSummary;
 //import com.practice.blog.post.dto.request.PostCreateRequest;
 //import com.practice.blog.post.dto.request.PostUpdateRequest;
 //import com.practice.blog.post.dto.response.PostResponse;
-//import com.practice.blog.post.dto.response.PostsResponse;
-//import com.practice.blog.post.dto.response.PostsResponses;
+//import com.practice.blog.post.dto.response.PostListResponse;
 //import com.practice.blog.post.repository.PostRepository;
 //import lombok.RequiredArgsConstructor;
 //import org.springframework.stereotype.Service;
@@ -30,22 +30,34 @@ package com.practice.blog.post.service;
 //    }
 //
 //    @Transactional
-//    public PostResponse readPost(Long postId) {
+//    public PostResponse getPost(Long postId) {
 //
 //    }
 //
 //    @Transactional(readOnly = true)
-//    public PostsResponses readPosts() {
+//    public PostListResponse getAllPosts() {
 //
 //    }
 //
 //    @Transactional
-//    public void updatePostContent(Long postId, PostUpdateRequest request, String password) {
+//    public void updatePostContent(Long postId, PostUpdateRequest request, Long accountId, String password) {
 //
 //    }
 //
 //    @Transactional
-//    public void deletePost(Long postId, String password) {
+//    public void deletePost(Long postId, Long accountId, String password) {
+//
+//    }
+//
+//    private Post findByPostId(Long postId) {
+//
+//    }
+//
+//    private Account findByAccountId(Long accountId) {
+//
+//    }
+//
+//    private void authorizePostWriter(Post post, Account account, String password) {
 //
 //    }
 //
