@@ -1,23 +1,27 @@
 package com.practice.blog.post.repository;
 
-//import com.practice.blog.post.domain.Post;
-//import org.springframework.data.jpa.repository.JpaRepository;
-//import org.springframework.data.jpa.repository.Modifying;
-//import org.springframework.data.jpa.repository.Query;
-//import org.springframework.data.repository.query.Param;
-//
-//import java.util.List;
-//import java.util.Optional;
-//
-//public interface PostRepository extends JpaRepository<Post, Long> {
-//
-//    // 게시물 아이디로 게시물 찾기
-//
-//
-//    // 최신순으로 모든 게시글 불러오기
-//
-//
-//    // 조회수 상승
-//
-//
-//}
+import com.practice.blog.post.domain.Post;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+
+import java.util.List;
+import java.util.Optional;
+
+public interface PostRepository extends JpaRepository<Post, Long> {
+
+    // 게시물 아이디로 게시물 찾기
+    @Modifying(clearAutomatically = true)
+    @Query("UPDATE Post p SET p.viewCount = p.viewCount + 1 WHERE p.id = :postId")
+    void increaseViewCount(@Param("postId") Long postId);
+
+    Optional<Post> findById(Long id);
+
+    // 최신순으로 모든 게시글 불러오기
+    List<Post> findAllByOrderByCreatedAtDesc();
+
+    // 조회수 상승
+
+
+}
