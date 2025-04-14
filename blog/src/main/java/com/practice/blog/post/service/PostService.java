@@ -1,7 +1,7 @@
 package com.practice.blog.post.service;
 
 import com.practice.blog.account.entity.Account;
-import com.practice.blog.account.service.AccountsService;
+import com.practice.blog.account.repository.AccountsRepository;
 import com.practice.blog.global.exception.BlogException;
 import com.practice.blog.global.exception.ExceptionCode;
 import com.practice.blog.post.domain.Post;
@@ -18,22 +18,22 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
+@Transactional
 @RequiredArgsConstructor
 public class PostService {
 
     private final PostRepository postRepository;
-    private final AccountsService accountsService;
+    private final AccountsRepository accountsRepository;
 
-    @Transactional
     public Long createPost(PostCreateRequest postCreateRequest) {
         Long accountId = postCreateRequest.accountId();
-        Account writerAccount = accountsService.findByAccountId(accountId);
-        Post newPost = postCreateRequest.toEntity(writerAccount);
+        Account writer = findByAccountId(accountId);
+        Post newPost = postCreateRequest.toEntity(writer);
         postRepository.save(newPost);
+
         return newPost.getId();
     }
 
-    @Transactional
     public PostResponse getPost(Long postId) {
         postRepository.increaseViewCount(postId);
         Post post = findByPostId(postId);
@@ -42,38 +42,41 @@ public class PostService {
 
     @Transactional(readOnly = true)
     public PostListResponse getAllPosts() {
-        List<PostSummary> postSummaries = postRepository.findAllByOrderByCreatedAtDesc().stream()
+        List<PostSummary> postSummaries = postRepository.findByOrderByCreatedAtDesc().stream()
                 .map(PostSummary::from).toList();
+
         return new PostListResponse(postSummaries, postRepository.count());
     }
 
-    @Transactional
     public void updatePostContent(Long postId, PostUpdateRequest request, Long accountId, String password) {
         Post post = findByPostId(postId);
-        Account account = accountsService.findByAccountId(accountId);
+        Account account = findByAccountId(accountId);
         authorizePostWriter(post, account, password);
+
         post.changeContent(request.content());
     }
 
-    @Transactional
     public void deletePost(Long postId, Long accountId, String password) {
         Post post = findByPostId(postId);
-        Account account = accountsService.findByAccountId(accountId);
-        authorizePostWriter(post, account, password);
+        Account account = findByAccountId(accountId);
+        authorizePostWriter(post,account,password);
         postRepository.delete(post);
     }
 
-    @Transactional(readOnly = true)
-    public Post findByPostId(Long postId) {
+    private Post findByPostId(Long postId) {
         return postRepository.findById(postId)
-                .orElseThrow(()-> new BlogException(ExceptionCode.POST_NOT_FOUND));
+                .orElseThrow(()->new BlogException(ExceptionCode.POST_NOT_FOUND));
+    }
+
+    private Account findByAccountId(Long accountId) {
+        return accountsRepository.findByAccountId(accountId)
+                .orElseThrow(()->new BlogException(ExceptionCode.ACCOUNT_NOT_FOUND));
     }
 
     private void authorizePostWriter(Post post, Account account, String password) {
-        if(!post.getWriter().equals(account) || !post.getWriter().getPassword().equals(password)) {
+        if(!post.getWriter().equals(account) || !post.getWriter().getPassword().equals(password)){
             throw new BlogException(ExceptionCode.POST_ACCOUNT_MISMATCH);
         }
     }
 
 }
-
