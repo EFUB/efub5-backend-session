@@ -15,9 +15,9 @@
 //@Builder
 //@AllArgsConstructor(access = AccessLevel.PRIVATE)
 //public class AccountCommentResponse {
-//    private String writerNickname;
-//    private List<CommentResponse> accountCommentList;
-//    private Long count;
+//    private final String accountNickname;
+//    private final List<CommentResponse> accountCommentList;
+//    private final Long count;
 //
 //    //빌더
 //}

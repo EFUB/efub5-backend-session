@@ -10,7 +10,8 @@
 //
 //@Getter
 //@Builder
-//@AllArgsConstructor(access = AccessLevel.PROTECTED)
+//@NoArgsConstructor(access = AccessLevel.PROTECTED)
+//@AllArgsConstructor(access = AccessLevel.PRIVATE)
 //public class CommentRequest {
 //    private Long accountId;
 //    private String content;
