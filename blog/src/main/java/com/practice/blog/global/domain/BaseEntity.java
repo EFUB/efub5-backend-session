@@ -13,10 +13,10 @@ import java.time.LocalDateTime;
 @EntityListeners(AuditingEntityListener.class)
 @Getter
 public abstract class BaseEntity {
-    @CreatedDate
-    private LocalDateTime createdAt;
+    // 생성 일시
 
-    @LastModifiedDate
-    private LocalDateTime modifiedAt;
+
+    // 수정 일시
+
 
 }
