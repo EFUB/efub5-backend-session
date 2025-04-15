@@ -1,6 +1,7 @@
 package com.practice.blog.account.entity;
 
 //import com.practice.blog.comment.domain.Comment;
+import com.practice.blog.comment.domain.Comment;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import lombok.AccessLevel;
@@ -42,8 +43,8 @@ public class Account {
     @Enumerated(EnumType.STRING)
     private AccountStatus status = AccountStatus.ACTIVE;
 
-//    @OneToMany(mappedBy = "writer",cascade = CascadeType.ALL,orphanRemoval = true)
-//    private List<Comment> commentList = new ArrayList<>();
+    @OneToMany(mappedBy = "writer",cascade = CascadeType.ALL,orphanRemoval = true)
+    private List<Comment> commentList = new ArrayList<>();
 
     @Builder
     public Account(String email, String password, String nickname) {
