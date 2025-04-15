@@ -1,9 +1,11 @@
 package com.practice.blog.post.controller;
 
+import com.practice.blog.post.domain.Post;
 import com.practice.blog.post.dto.request.PostCreateRequest;
 import com.practice.blog.post.dto.request.PostUpdateRequest;
-import com.practice.blog.post.dto.response.PostResponse;
 import com.practice.blog.post.dto.response.PostListResponse;
+//import com.practice.blog.post.dto.response.PostsResponses;
+import com.practice.blog.post.dto.response.PostResponse;
 import com.practice.blog.post.service.PostService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -27,28 +29,31 @@ public class PostController {
 
     // 게시물 목록 조회
     @GetMapping
-    public ResponseEntity<PostListResponse> getAllPosts(){
+    public ResponseEntity<PostListResponse> getAllPosts() {
         return ResponseEntity.ok(postService.getAllPosts());
     }
 
+    // 게시물 내용 조회
     @GetMapping("/{id}")
-    public ResponseEntity<PostResponse> getPost(@PathVariable("id") Long id){
-        return ResponseEntity.ok(postService.getPost(id));
+    public ResponseEntity<PostResponse> getPost(@PathVariable("id") Long postId) {
+        return ResponseEntity.ok(postService.getPost(postId));
     }
 
+    // 게시물 내용 수정
     @PatchMapping("/{id}")
-    public ResponseEntity<Void> updatePostContent(@PathVariable("id") Long postId,
-                                                  @RequestHeader("Auth-Id") Long accountId,
-                                                  @RequestHeader("Auth-Password") String password,
-                                                  @RequestBody PostUpdateRequest request) {
-        postService.updatePostContent(postId, request, accountId, password);
+    public ResponseEntity<Void> updatedPostContetn(@PathVariable("id") Long postId,
+                                                   @RequestHeader("Auth-Id") Long accountId,
+                                                   @RequestHeader("Auth-Password") String password, // 실제 개발 때는 jwt 토큰으로 받움
+                                                   @Valid @RequestBody PostUpdateRequest postUpdateRequest) {
+        postService.updatePostContent(postId, postUpdateRequest, accountId, password);
         return ResponseEntity.noContent().build();
     }
 
+    // 게시물 삭제
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletePost(@PathVariable("id") Long postId,
                                            @RequestHeader("Auth-Id") Long accountId,
-                                           @RequestHeader("Auth-Password") String password){
+                                           @RequestHeader("Auth-Password") String password) {
         postService.deletePost(postId, accountId, password);
         return ResponseEntity.noContent().build();
     }
