@@ -60,5 +60,6 @@ public class AccountsService {
     @Transactional(readOnly=true)
     public Account findByAccountId(Long accountId) {
         return accountsRepository.findByAccountId(accountId)
-                .orElseThrow(()-> new BlogException(ExceptionCode.ACCOUNT_NOT_FOUND));    }
+                .orElseThrow(()-> new BlogException(ExceptionCode.ACCOUNT_NOT_FOUND));
+    }
 }
