@@ -1,8 +1,10 @@
 package com.practice.blog.post.controller;
 
 import com.practice.blog.comment.dto.request.CommentRequest;
+import com.practice.blog.comment.dto.response.CommentResponse;
 import com.practice.blog.comment.service.CommentService;
 //import com.practice.blog.post.dto.response.PostCommentResponse;
+import com.practice.blog.post.dto.response.PostCommentResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -24,4 +26,8 @@ public class PostCommentController {
     }
 
     //게시물별 댓글 목록 조회
+    @GetMapping
+    public ResponseEntity<PostCommentResponse> getComments(@PathVariable Long postId){
+        return ResponseEntity.ok(commentService.getPostCommentList(postId));
+    }
 }
