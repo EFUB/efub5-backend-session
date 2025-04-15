@@ -25,4 +25,5 @@ public interface PostRepository extends JpaRepository<Post, Long> {
     void increaseViewCount(@Param("postId") Long postId);
 
 
+
 }

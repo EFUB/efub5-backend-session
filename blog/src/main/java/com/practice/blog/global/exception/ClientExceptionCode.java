@@ -5,7 +5,7 @@ public enum ClientExceptionCode {
     INTERNAL_SERVER_ERROR,
     INVALID_PARAMETER,
 
-    // Member
+    // Account
     ACCOUNT_NOT_FOUND,
 
     // Post
