@@ -42,7 +42,7 @@ public class PostService {
 
     @Transactional(readOnly = true)
     public PostListResponse getAllPosts() {
-        List<PostSummary> postSummaries = postRepository.findAllByOrderByCreatedAtDesc().stream()
+        List<PostSummary> postSummaries = postRepository.findByOrderByCreatedAtDesc().stream()
                 .map(PostSummary::from).toList();
         return new PostListResponse(postSummaries, postRepository.count());
     }
