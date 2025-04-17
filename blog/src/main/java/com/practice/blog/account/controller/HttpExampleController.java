@@ -1,4 +1,4 @@
-package com.practice.efubaccount.controller;
+package com.practice.blog.account.controller;
 
 import com.practice.efubaccount.dto.ExampleDto;
 import org.springframework.stereotype.Controller;
