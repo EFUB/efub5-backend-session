@@ -44,11 +44,13 @@ public class PostController {
     // 게시물 내용 수정
     @PatchMapping("/{id}")
     public ResponseEntity<Void> updatePost(@PathVariable("id") Long postId,
+
                                            @RequestHeader("Auth-Id") Long accountId,
                                            @RequestHeader("Auth-Password") String password,
                                            @Valid @RequestBody PostUpdateRequest postUpdateRequest){
 
         postService.updatePostContent(postId, postUpdateRequest, accountId, password);
+                          
         return ResponseEntity.noContent().build();
     }
 
@@ -58,6 +60,7 @@ public class PostController {
     public ResponseEntity<Void> deletePost(@PathVariable("id") Long postId,
                                            @RequestHeader("Auth-Id") Long accountId,
                                            @RequestHeader("Auth-Password") String password){
+
         postService.deletePost(postId,accountId,password);
         return ResponseEntity.noContent().build();
     }

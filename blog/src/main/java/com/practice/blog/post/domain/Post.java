@@ -1,14 +1,15 @@
 package com.practice.blog.post.domain;
 
 import com.practice.blog.account.entity.Account;
-//import com.practice.blog.comment.domain.Comment;
 import com.practice.blog.comment.domain.Comment;
+
 import com.practice.blog.global.domain.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,4 +47,5 @@ public class Post extends BaseEntity {
     public void changeContent(String newContent) {
         this.content = newContent;
     }
+
 }
