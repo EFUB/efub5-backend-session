@@ -1,0 +1,36 @@
+#spring:
+#  application:
+#
+#  datasource:
+#    url: jdbc:mysql://localhost:3306/efubaccount?useSSL=false&serverTimezone=UTC&characterEncoding=UTF-8&allowPublicKeyRetrieval=true
+#    username: root
+#    password: 0614346
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#  jpa:
+#    show-sql: true
+#    hibernate:
+#      ddl-auto: update
+#    properties:
+#      hibernate:
+#        format_sql: true
+#  server:
+#    port: 8080
+#
+#
+
+spring:
+  application:
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/blog?useSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true
+    username: root
+    password: jya0614346!
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
