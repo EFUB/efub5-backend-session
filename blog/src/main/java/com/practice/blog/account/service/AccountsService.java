@@ -16,7 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
-public class AccountService {
+public class AccountsService {
 
     private final AccountsRepository accountsRepository;
 
