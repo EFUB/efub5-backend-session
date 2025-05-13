@@ -9,15 +9,13 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
 
-@MappedSuperclass   //공통 매핑 정보가 필요한 경우
+@MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
 @Getter
 public abstract class BaseEntity {
-    // 생성 일시
     @CreatedDate
     private LocalDateTime createdAt;
 
-    // 수정 일시
     @LastModifiedDate
     private LocalDateTime modifiedAt;
 
