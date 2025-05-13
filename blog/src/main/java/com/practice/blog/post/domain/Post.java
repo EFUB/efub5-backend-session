@@ -2,6 +2,7 @@ package com.practice.blog.post.domain;
 
 import com.practice.blog.account.entity.Account;
 import com.practice.blog.comment.domain.Comment;
+import com.practice.blog.comment.domain.CommentLike;
 import com.practice.blog.global.domain.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
