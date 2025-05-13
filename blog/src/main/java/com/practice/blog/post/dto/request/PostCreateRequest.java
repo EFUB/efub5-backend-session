@@ -7,14 +7,12 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 public record PostCreateRequest(@NotNull Long accountId,
-                                @NotBlank(message = "제목을 입력해야 합니다.") String title,
-                                @Size(min=5, max=500, message = "내용은 5자 이상 500ㅈ 이하") String content) {
-  public Post toEntity(Account account) {
-      return Post.builder()
-              .title(title)
-              .content(content)
-              .writer(account)
-              .build();
-  }
-
-}
+                                @NotBlank String title,
+                                @Size(min=5, max=500) String content){
+    public Post toEntity(Account account) {
+        return Post.builder()
+                .title(title)
+                .content(content)
+                .writer(account)
+                .build();
+    }}

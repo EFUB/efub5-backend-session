@@ -17,10 +17,7 @@ public abstract class BaseEntity {
     @CreatedDate
     private LocalDateTime createdAt;
 
-
     // 수정 일시
     @LastModifiedDate
-    private LocalDateTime updatedAt;
-
-
+    private LocalDateTime modifiedAt;
 }
