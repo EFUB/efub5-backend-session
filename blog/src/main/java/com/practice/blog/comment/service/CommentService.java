@@ -4,7 +4,10 @@ import com.practice.blog.account.dto.response.AccountCommentResponse;
 import com.practice.blog.account.entity.Account;
 import com.practice.blog.account.service.AccountService;
 import com.practice.blog.comment.domain.Comment;
+import com.practice.blog.comment.domain.CommentLike;
 import com.practice.blog.comment.dto.request.CommentRequest;
+import com.practice.blog.comment.dto.request.CommentUpdateRequest;
+import com.practice.blog.comment.dto.response.CommentResponse;
 import com.practice.blog.comment.repository.CommentLikeRepository;
 import com.practice.blog.comment.repository.CommentRepository;
 import com.practice.blog.global.exception.BlogException;
@@ -51,25 +54,50 @@ public class CommentService {
         return AccountCommentResponse.of(account, commentList);
     }
 
-//    // 댓글 수정
-//    @Transactional
-//    public CommentResponse updateComment(Long commentId, CommentUpdateRequest request, Long accountId, String password) {
-//    }
-//
-//    // 댓글 삭제
-//    @Transactional
-//    public void deleteComment(Long commentId, Long accountId, String password) {
-//    }
-//
-//    // 댓글 좋아요 등록
-//    @Transactional
-//    public void likeComment(Long commentId, Long accountId) {
-//    }
-//
-//    // 댓글 좋아요 취소
-//    @Transactional
-//    public void unlikeComment(Long commentId, Long accountId) {
-//    }
+    //    // 댓글 수정
+    @Transactional
+    public CommentResponse updateComment(Long commentId, CommentUpdateRequest request, Long accountId, String password) {
+        Comment comment=findByCommentId(commentId);
+        Account account=accountService.findByAccountId(accountId);
+        authorizeCommentWriter(comment, account, password);
+        comment.updateContent(request.getContent());
+        return CommentResponse.of(comment);
+
+    }
+
+    // 댓글 삭제
+    @Transactional
+    public void deleteComment(Long commentId, Long accountId, String password) {
+        Comment comment=findByCommentId(commentId);
+        Account account=accountService.findByAccountId(accountId);
+        authorizeCommentWriter(comment, account, password);
+        commentRepository.delete(comment);
+    }
+
+    // 댓글 좋아요 등록
+    @Transactional
+    public void likeComment(Long commentId, Long accountId) {
+        Comment comment=findByCommentId(commentId);
+        Account account=accountService.findByAccountId(accountId);
+        if(commentLikeRepository.existsByCommentAndAccount(comment, account)){
+            throw new BlogException(ExceptionCode.LIKE_ALREADY_EXISTS);
+        }
+        CommentLike like=CommentLike.builder()
+                .comment(comment)
+                .account(account)
+                .build();
+        commentLikeRepository.save(like);
+    }
+
+    // 댓글 좋아요 취소
+    @Transactional
+    public void unlikeComment(Long commentId, Long accountId) {
+        Comment comment=findByCommentId(commentId);
+        Account account=accountService.findByAccountId(accountId);
+        CommentLike like=commentLikeRepository.findByCommentAndAccount(comment, account)
+                .orElseThrow(()->new BlogException(ExceptionCode.LIKE_NOT_FOUND));
+        commentLikeRepository.delete(like);
+    }
 
     private Comment findByCommentId(Long commentId) {
         return commentRepository.findById(commentId)
@@ -77,8 +105,8 @@ public class CommentService {
     }
 
     private void authorizeCommentWriter(Comment comment, Account account, String password) {
-//        if (!comment.getWriter().equals(account) || !account.getPassword().equals(password)) {
-//            throw new BlogException(ExceptionCode.COMMENT_ACCOUNT_MISMATCH);
-//        }
+        if (!comment.getWriter().equals(account) || !account.getPassword().equals(password)) {
+            throw new BlogException(ExceptionCode.COMMENT_ACCOUNT_MISMATCH);
+        }
     }
 }

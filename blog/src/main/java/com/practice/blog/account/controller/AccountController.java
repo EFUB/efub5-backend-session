@@ -4,7 +4,7 @@ import com.practice.blog.account.dto.response.AccountResponseDto;
 import com.practice.blog.account.dto.response.CreateAccountResponseDto;
 import com.practice.blog.account.dto.request.BioUpdateRequestDto;
 import com.practice.blog.account.dto.request.CreateAccountRequestDto;
-import com.practice.blog.account.service.AccountsService;
+import com.practice.blog.account.service.AccountService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class AccountController {
 
-    private final AccountsService accountsService;
+    private final AccountService accountsService;
 
     // 회원 조회: GET /accounts/{accountId}
     @GetMapping("/{accountId}")

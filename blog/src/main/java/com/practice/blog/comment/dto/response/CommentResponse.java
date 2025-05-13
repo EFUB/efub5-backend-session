@@ -18,6 +18,7 @@ public class CommentResponse {
     private final String content;
     private final LocalDateTime createdAt;
     private final LocalDateTime updatedAt;
+    private final int likeCount; //좋아요 개수 추가!
 
     public static CommentResponse of(Comment comment) {
         return CommentResponse.builder()
@@ -27,6 +28,7 @@ public class CommentResponse {
                 .content(comment.getContent())
                 .createdAt(comment.getCreatedAt())
                 .updatedAt(comment.getModifiedAt())
+                .likeCount(comment.getCommentLikeList().size()) //추가!
                 .build();
     }
 }
