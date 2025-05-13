@@ -34,6 +34,7 @@ public class PostService {
         return newPost.getId();
     }
 
+    @Transactional(readOnly = true)
     public PostResponse getPost(Long postId) {
         postRepository.increaseViewCount(postId);
         Post post = findByPostId(postId);
@@ -63,11 +64,13 @@ public class PostService {
         postRepository.delete(post);
     }
 
-    private Post findByPostId(Long postId) {
+    @Transactional(readOnly = true)
+    public Post findByPostId(Long postId) {
         return postRepository.findById(postId)
                 .orElseThrow(()->new BlogException(ExceptionCode.POST_NOT_FOUND));
     }
 
+    @Transactional(readOnly = true)
     private Account findByAccountId(Long accountId) {
         return accountsRepository.findByAccountId(accountId)
                 .orElseThrow(()->new BlogException(ExceptionCode.ACCOUNT_NOT_FOUND));

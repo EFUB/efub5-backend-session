@@ -1,9 +1,13 @@
 package com.practice.blog.post.domain;
 
 import com.practice.blog.account.entity.Account;
+import com.practice.blog.comment.domain.Comment;
 import com.practice.blog.global.domain.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
@@ -27,6 +31,9 @@ public class Post extends BaseEntity {
 
     // 조회수
     private long viewCount;
+
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Comment> commentList = new ArrayList<>();
 
     // 빌더
     @Builder
