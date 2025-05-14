@@ -8,6 +8,8 @@ import com.practice.blog.account.entity.Account;
 import com.practice.blog.account.entity.AccountStatus;
 import com.practice.blog.account.repository.AccountsRepository;
 
+import com.practice.blog.global.exception.BlogException;
+import com.practice.blog.global.exception.ExceptionCode;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -53,5 +55,11 @@ public class AccountsService {
     public void physicalDeleteAccount(Long accountId) {
         Account account = accountsRepository.findByAccountId(accountId).orElseThrow(()-> new IllegalArgumentException("Account with id " + accountId + " does not exist"));
         accountsRepository.delete(account);
+    }
+
+    @Transactional(readOnly=true)
+    public Account findByAccountId(Long accountId) {
+        return accountsRepository.findByAccountId(accountId)
+                .orElseThrow(()-> new BlogException(ExceptionCode.ACCOUNT_NOT_FOUND));
     }
 }
