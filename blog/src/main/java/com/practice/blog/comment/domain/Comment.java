@@ -33,9 +33,6 @@ public class Comment extends BaseEntity {
     @JoinColumn(name="post_id", updatable = false)
     private Post post;
 
-    @OneToMany(mappedBy = "comment", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<CommentLike> commentLikeList = new ArrayList<>();
-
     @Builder
     public Comment(String content, Account writer, Post post) {
         this.content = content;

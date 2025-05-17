@@ -1,7 +1,7 @@
 package com.practice.blog.post.service;
 
 import com.practice.blog.account.entity.Account;
-import com.practice.blog.account.service.AccountService;
+import com.practice.blog.account.service.AccountsService;
 import com.practice.blog.global.exception.BlogException;
 import com.practice.blog.global.exception.ExceptionCode;
 import com.practice.blog.post.domain.Post;
@@ -22,7 +22,7 @@ import java.util.List;
 public class PostService {
 
     private final PostRepository postRepository;
-    private final AccountService accountsService;
+    private final AccountsService accountsService;
 
     @Transactional
     public Long createPost(PostCreateRequest postCreateRequest) {
