@@ -1,6 +1,6 @@
-package com.practice.blog.account.controller;
+package com.practice.efubaccount.controller;
 
-import com.practice.blog.account.dto.request.ExampleDto;
+import com.practice.efubaccount.dto.ExampleDto;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 

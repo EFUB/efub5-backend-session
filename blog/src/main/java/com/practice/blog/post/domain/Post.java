@@ -1,6 +1,7 @@
 package com.practice.blog.post.domain;
 
 import com.practice.blog.account.entity.Account;
+//import com.practice.blog.comment.domain.Comment;
 import com.practice.blog.comment.domain.Comment;
 import com.practice.blog.global.domain.BaseEntity;
 import jakarta.persistence.*;
@@ -18,7 +19,7 @@ import java.util.List;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Post extends BaseEntity {
 
-    @Id
+    @Id @Column(name = "post_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -46,3 +47,4 @@ public class Post extends BaseEntity {
         this.content = newContent;
     }
 }
+

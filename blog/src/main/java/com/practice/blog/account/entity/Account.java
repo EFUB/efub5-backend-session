@@ -1,5 +1,6 @@
 package com.practice.blog.account.entity;
 
+//import com.practice.blog.comment.domain.Comment;
 import com.practice.blog.comment.domain.Comment;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
