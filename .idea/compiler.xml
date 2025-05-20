@@ -4,10 +4,5 @@
     <annotationProcessing>
       <profile default="true" name="Default" enabled="true" />
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="blog" target="17" />
-      <module name="blog.main" target="17" />
-      <module name="blog.test" target="17" />
-    </bytecodeTargetLevel>
   </component>
 </project>
