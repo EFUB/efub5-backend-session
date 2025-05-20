@@ -62,7 +62,7 @@ public class PostService {
         postRepository.delete(post);
     }
 
-    private Post findByPostId(Long postId) {
+    public Post findByPostId(Long postId) {
         return postRepository.findById(postId)
                 .orElseThrow(()-> new BlogException(ExceptionCode.POST_NOT_FOUND));
     }
