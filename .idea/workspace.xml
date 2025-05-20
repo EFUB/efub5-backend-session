@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4379da3e-c273-4428-8fdc-28d4ccbb8d92" name="변경" comment="Feat: follow 조회 api">
-      <change beforePath="$PROJECT_DIR$/blog/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/blog/.gitignore" afterDir="false" />
+    <list default="true" id="4379da3e-c273-4428-8fdc-28d4ccbb8d92" name="변경" comment="Feat: comment 조회 api">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blog/src/main/java/com/practice/blog/follow/controller/FollowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog/src/main/java/com/practice/blog/follow/controller/FollowController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blog/src/main/java/com/practice/blog/follow/repository/FollowRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog/src/main/java/com/practice/blog/follow/repository/FollowRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blog/src/main/java/com/practice/blog/follow/service/FollowService.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog/src/main/java/com/practice/blog/follow/service/FollowService.java" afterDir="false" />
@@ -98,7 +98,7 @@
       <workItem from="1746589321177" duration="5271000" />
       <workItem from="1746754610104" duration="6000" />
       <workItem from="1747734935379" duration="1436000" />
-      <workItem from="1747737160846" duration="3551000" />
+      <workItem from="1747737160846" duration="2879000" />
     </task>
     <task id="LOCAL-00001" summary="Feat: comment 조회 api">
       <option name="closed" value="true" />
@@ -108,15 +108,7 @@
       <option name="project" value="LOCAL" />
       <updated>1744717544623</updated>
     </task>
-    <task id="LOCAL-00002" summary="Feat: follow 조회 api">
-      <option name="closed" value="true" />
-      <created>1747740132770</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1747740132770</updated>
-    </task>
-    <option name="localTasksCounter" value="3" />
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -135,8 +127,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Feat: comment 조회 api" />
-    <MESSAGE value="Feat: follow 조회 api" />
-    <option name="LAST_COMMIT_MESSAGE" value="Feat: follow 조회 api" />
+    <option name="LAST_COMMIT_MESSAGE" value="Feat: comment 조회 api" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -17,11 +17,11 @@ public class PostCommentResponse {
     private final List<CommentResponse> postCommentList;
     private final Long count;
 
-    public static PostCommentResponse of(Long postId, List<Comment> comments) {
+    public static PostCommentResponse of(Long postId, List<Comment> commentList) {
         return PostCommentResponse.builder()
                 .postId(postId)
-                .postCommentList(comments.stream().map(CommentResponse::of).collect(Collectors.toList()))
-                .count((long) comments.size())
+                .postCommentList(commentList.stream().map(CommentResponse::of).collect(Collectors.toList()))
+                .count((long) commentList.size())
                 .build();
 
     }
