@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="fe33e8c1-7582-4b77-8c74-2824bcc4bbce" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/blog/src/main/java/com/practice/blog/account/controller/AccountCommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog/src/main/java/com/practice/blog/account/controller/AccountCommentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/src/main/java/com/practice/blog/account/controller/AccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog/src/main/java/com/practice/blog/account/controller/AccountController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/src/main/java/com/practice/blog/comment/controller/PostCommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog/src/main/java/com/practice/blog/comment/controller/PostCommentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/src/main/java/com/practice/blog/comment/domain/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog/src/main/java/com/practice/blog/comment/domain/Comment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/src/main/java/com/practice/blog/comment/domain/CommentLike.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog/src/main/java/com/practice/blog/comment/domain/CommentLike.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/src/main/java/com/practice/blog/comment/dto/request/CommentUpdateRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog/src/main/java/com/practice/blog/comment/dto/request/CommentUpdateRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/src/main/java/com/practice/blog/comment/dto/response/CommentResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog/src/main/java/com/practice/blog/comment/dto/response/CommentResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/src/main/java/com/practice/blog/comment/repository/CommentLikeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog/src/main/java/com/practice/blog/comment/repository/CommentLikeRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/src/main/java/com/practice/blog/comment/service/CommentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog/src/main/java/com/practice/blog/comment/service/CommentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/src/main/java/com/practice/blog/post/service/PostService.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog/src/main/java/com/practice/blog/post/service/PostService.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$/blog">
+      <ProjectState />
+    </projectState>
+    <projectState path="$PROJECT_DIR$/efubaccount">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="blog" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 8
+}]]></component>
+  <component name="ProjectId" id="2x2l6v1CuVqnbvvX7VKJWRfkHV5" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Gradle.blog [:BlogApplication.main()].executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "week7",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/양은서/Desktop/EFUB/efub5-backend-session/blog/build.gradle"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-17.0.10-temurin-17.0.10-3183f394aec4-87f3d08d" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="fe33e8c1-7582-4b77-8c74-2824bcc4bbce" name="Changes" comment="" />
+      <created>1747143877345</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1747143877345</updated>
+    </task>
+    <servers />
+  </component>
+</project>

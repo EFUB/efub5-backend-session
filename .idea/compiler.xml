@@ -11,5 +11,12 @@
         <module name="blog.main" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="com.practice.efubaccount.main" target="17" />
+      <module name="com.practice.efubaccount.test" target="17" />
+      <module name="efubaccount" target="17" />
+      <module name="efubaccount.main" target="17" />
+      <module name="efubaccount.test" target="17" />
+    </bytecodeTargetLevel>
   </component>
 </project>

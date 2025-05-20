@@ -1,7 +1,7 @@
 package com.practice.blog.post.domain;
 
 import com.practice.blog.account.entity.Account;
-//import com.practice.blog.comment.domain.Comment;
+import com.practice.blog.comment.domain.Comment;
 import com.practice.blog.global.domain.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
@@ -31,8 +31,8 @@ public class Post extends BaseEntity {
 
     private Long viewCount;
 
-//    @OneToMany(mappedBy="post", cascade = CascadeType.ALL, orphanRemoval = true)
-//    private List<Comment> commentList = new ArrayList<>();
+    @OneToMany(mappedBy="post", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Comment> commentList = new ArrayList<>();
 
     @Builder
     public Post(String title, String content, Account writer) {
@@ -46,4 +46,3 @@ public class Post extends BaseEntity {
         this.content = newContent;
     }
 }
-
