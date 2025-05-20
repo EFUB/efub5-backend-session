@@ -62,4 +62,10 @@ public class AccountsService {
         return accountsRepository.findByAccountId(accountId)
                 .orElseThrow(()-> new BlogException(ExceptionCode.ACCOUNT_NOT_FOUND));
     }
+
+    @Transactional
+    public Account findByEmail(String email){
+        return accountsRepository.findByEmail(email)
+                .orElseThrow(()-> new BlogException(ExceptionCode.ACCOUNT_NOT_FOUND));
+    }
 }

@@ -19,5 +19,9 @@ public enum ClientExceptionCode {
 
     // CommentLike
     LIKE_NOT_FOUND,
-    LIKE_ALREADY_EXISTS
+    LIKE_ALREADY_EXISTS,
+
+    // Follows
+    ALREADY_FOLLOWED,
+    FOLLOW_NOT_FOUND
 }
