@@ -1,0 +1,167 @@
+Index: .idea/modules/blog.main.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<module version=\"4\">\r\n  <component name=\"AdditionalModuleElements\">\r\n    <content url=\"file://$MODULE_DIR$/../../blog/src/main\" dumb=\"true\">\r\n      <sourceFolder url=\"file://$MODULE_DIR$/../../blog/src/main/resources\" type=\"java-resource\" />\r\n    </content>\r\n  </component>\r\n</module>
+===================================================================
+diff --git a/.idea/modules/blog.main.iml b/.idea/modules/blog.main.iml
+--- a/.idea/modules/blog.main.iml	
++++ b/.idea/modules/blog.main.iml	
+@@ -1,8 +1,88 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+-<module version="4">
++<module external.linked.project.id="blog:main" external.linked.project.path="$MODULE_DIR$/../../blog" external.root.project.path="$MODULE_DIR$/../../blog" external.system.id="GRADLE" external.system.module.group="com.practice" external.system.module.type="sourceSet" external.system.module.version="0.0.1-SNAPSHOT" type="JAVA_MODULE" version="4">
+   <component name="AdditionalModuleElements">
+     <content url="file://$MODULE_DIR$/../../blog/src/main" dumb="true">
+       <sourceFolder url="file://$MODULE_DIR$/../../blog/src/main/resources" type="java-resource" />
+     </content>
+   </component>
++  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_17">
++    <output url="file://$MODULE_DIR$/../../blog/build/classes/java/main" />
++    <exclude-output />
++    <content url="file://$MODULE_DIR$/../../blog/build/generated/sources/annotationProcessor/java/main">
++      <sourceFolder url="file://$MODULE_DIR$/../../blog/build/generated/sources/annotationProcessor/java/main" isTestSource="false" generated="true" />
++    </content>
++    <content url="file://$MODULE_DIR$/../../blog/src/main">
++      <sourceFolder url="file://$MODULE_DIR$/../../blog/src/main/java" isTestSource="false" />
++      <sourceFolder url="file://$MODULE_DIR$/../../blog/src/main/resources" type="java-resource" />
++    </content>
++    <orderEntry type="inheritedJdk" />
++    <orderEntry type="sourceFolder" forTests="false" />
++    <orderEntry type="library" scope="PROVIDED" name="Gradle: org.projectlombok:lombok:1.18.36" level="project" />
++    <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter-data-jpa:3.3.10" level="project" />
++    <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter-web:3.3.10" level="project" />
++    <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter-validation:3.3.10" level="project" />
++    <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter-aop:3.3.10" level="project" />
++    <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter-jdbc:3.3.10" level="project" />
++    <orderEntry type="library" name="Gradle: org.hibernate.orm:hibernate-core:6.5.3.Final" level="project" />
++    <orderEntry type="library" name="Gradle: org.springframework.data:spring-data-jpa:3.3.10" level="project" />
++    <orderEntry type="library" name="Gradle: org.springframework:spring-aspects:6.1.18" level="project" />
++    <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter-json:3.3.10" level="project" />
++    <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter:3.3.10" level="project" />
++    <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter-tomcat:3.3.10" level="project" />
++    <orderEntry type="library" name="Gradle: org.springframework:spring-webmvc:6.1.18" level="project" />
++    <orderEntry type="library" name="Gradle: org.springframework:spring-web:6.1.18" level="project" />
++    <orderEntry type="library" name="Gradle: org.apache.tomcat.embed:tomcat-embed-el:10.1.39" level="project" />
++    <orderEntry type="library" name="Gradle: org.hibernate.validator:hibernate-validator:8.0.2.Final" level="project" />
++    <orderEntry type="library" name="Gradle: org.springframework:spring-aop:6.1.18" level="project" />
++    <orderEntry type="library" name="Gradle: org.aspectj:aspectjweaver:1.9.23" level="project" />
++    <orderEntry type="library" name="Gradle: com.zaxxer:HikariCP:5.1.0" level="project" />
++    <orderEntry type="library" name="Gradle: org.springframework:spring-jdbc:6.1.18" level="project" />
++    <orderEntry type="library" name="Gradle: jakarta.persistence:jakarta.persistence-api:3.1.0" level="project" />
++    <orderEntry type="library" name="Gradle: jakarta.transaction:jakarta.transaction-api:2.0.1" level="project" />
++    <orderEntry type="library" name="Gradle: org.springframework:spring-context:6.1.18" level="project" />
++    <orderEntry type="library" name="Gradle: org.springframework:spring-orm:6.1.18" level="project" />
++    <orderEntry type="library" name="Gradle: org.springframework.data:spring-data-commons:3.3.10" level="project" />
++    <orderEntry type="library" name="Gradle: org.springframework:spring-tx:6.1.18" level="project" />
++    <orderEntry type="library" name="Gradle: org.springframework:spring-beans:6.1.18" level="project" />
++    <orderEntry type="library" name="Gradle: org.springframework:spring-core:6.1.18" level="project" />
++    <orderEntry type="library" name="Gradle: org.antlr:antlr4-runtime:4.13.0" level="project" />
++    <orderEntry type="library" name="Gradle: jakarta.annotation:jakarta.annotation-api:2.1.1" level="project" />
++    <orderEntry type="library" name="Gradle: org.slf4j:slf4j-api:2.0.17" level="project" />
++    <orderEntry type="library" name="Gradle: com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.17.3" level="project" />
++    <orderEntry type="library" name="Gradle: com.fasterxml.jackson.module:jackson-module-parameter-names:2.17.3" level="project" />
++    <orderEntry type="library" name="Gradle: com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.17.3" level="project" />
++    <orderEntry type="library" name="Gradle: com.fasterxml.jackson.core:jackson-databind:2.17.3" level="project" />
++    <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-autoconfigure:3.3.10" level="project" />
++    <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot:3.3.10" level="project" />
++    <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter-logging:3.3.10" level="project" />
++    <orderEntry type="library" name="Gradle: org.yaml:snakeyaml:2.2" level="project" />
++    <orderEntry type="library" name="Gradle: org.apache.tomcat.embed:tomcat-embed-websocket:10.1.39" level="project" />
++    <orderEntry type="library" name="Gradle: org.apache.tomcat.embed:tomcat-embed-core:10.1.39" level="project" />
++    <orderEntry type="library" name="Gradle: org.springframework:spring-expression:6.1.18" level="project" />
++    <orderEntry type="library" name="Gradle: io.micrometer:micrometer-observation:1.13.12" level="project" />
++    <orderEntry type="library" name="Gradle: jakarta.validation:jakarta.validation-api:3.0.2" level="project" />
++    <orderEntry type="library" name="Gradle: org.jboss.logging:jboss-logging:3.5.3.Final" level="project" />
++    <orderEntry type="library" name="Gradle: com.fasterxml:classmate:1.7.0" level="project" />
++    <orderEntry type="library" name="Gradle: org.springframework:spring-jcl:6.1.18" level="project" />
++    <orderEntry type="library" name="Gradle: com.fasterxml.jackson.core:jackson-annotations:2.17.3" level="project" />
++    <orderEntry type="library" name="Gradle: com.fasterxml.jackson.core:jackson-core:2.17.3" level="project" />
++    <orderEntry type="library" name="Gradle: ch.qos.logback:logback-classic:1.5.18" level="project" />
++    <orderEntry type="library" name="Gradle: org.apache.logging.log4j:log4j-to-slf4j:2.23.1" level="project" />
++    <orderEntry type="library" name="Gradle: org.slf4j:jul-to-slf4j:2.0.17" level="project" />
++    <orderEntry type="library" name="Gradle: io.micrometer:micrometer-commons:1.13.12" level="project" />
++    <orderEntry type="library" name="Gradle: ch.qos.logback:logback-core:1.5.18" level="project" />
++    <orderEntry type="library" name="Gradle: org.apache.logging.log4j:log4j-api:2.23.1" level="project" />
++    <orderEntry type="library" scope="RUNTIME" name="Gradle: com.mysql:mysql-connector-j:8.3.0" level="project" />
++    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.hibernate.common:hibernate-commons-annotations:6.0.6.Final" level="project" />
++    <orderEntry type="library" scope="RUNTIME" name="Gradle: io.smallrye:jandex:3.1.2" level="project" />
++    <orderEntry type="library" scope="RUNTIME" name="Gradle: net.bytebuddy:byte-buddy:1.14.19" level="project" />
++    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.glassfish.jaxb:jaxb-runtime:4.0.5" level="project" />
++    <orderEntry type="library" scope="RUNTIME" name="Gradle: jakarta.xml.bind:jakarta.xml.bind-api:4.0.2" level="project" />
++    <orderEntry type="library" scope="RUNTIME" name="Gradle: jakarta.inject:jakarta.inject-api:2.0.1" level="project" />
++    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.glassfish.jaxb:jaxb-core:4.0.5" level="project" />
++    <orderEntry type="library" scope="RUNTIME" name="Gradle: jakarta.activation:jakarta.activation-api:2.1.3" level="project" />
++    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.eclipse.angus:angus-activation:2.0.2" level="project" />
++    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.glassfish.jaxb:txw2:4.0.5" level="project" />
++    <orderEntry type="library" scope="RUNTIME" name="Gradle: com.sun.istack:istack-commons-runtime:4.1.2" level="project" />
++  </component>
+ </module>
+\ No newline at end of file
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"fe33e8c1-7582-4b77-8c74-2824bcc4bbce\" name=\"Changes\" comment=\"\">\r\n      <change beforePath=\"$PROJECT_DIR$/blog/src/main/java/com/practice/blog/account/controller/AccountCommentController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/blog/src/main/java/com/practice/blog/account/controller/AccountCommentController.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/blog/src/main/java/com/practice/blog/account/controller/AccountController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/blog/src/main/java/com/practice/blog/account/controller/AccountController.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/blog/src/main/java/com/practice/blog/comment/controller/PostCommentController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/blog/src/main/java/com/practice/blog/comment/controller/PostCommentController.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/blog/src/main/java/com/practice/blog/comment/domain/Comment.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/blog/src/main/java/com/practice/blog/comment/domain/Comment.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/blog/src/main/java/com/practice/blog/comment/domain/CommentLike.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/blog/src/main/java/com/practice/blog/comment/domain/CommentLike.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/blog/src/main/java/com/practice/blog/comment/dto/request/CommentUpdateRequest.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/blog/src/main/java/com/practice/blog/comment/dto/request/CommentUpdateRequest.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/blog/src/main/java/com/practice/blog/comment/dto/response/CommentResponse.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/blog/src/main/java/com/practice/blog/comment/dto/response/CommentResponse.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/blog/src/main/java/com/practice/blog/comment/repository/CommentLikeRepository.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/blog/src/main/java/com/practice/blog/comment/repository/CommentLikeRepository.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/blog/src/main/java/com/practice/blog/comment/service/CommentService.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/blog/src/main/java/com/practice/blog/comment/service/CommentService.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/blog/src/main/java/com/practice/blog/post/service/PostService.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/blog/src/main/java/com/practice/blog/post/service/PostService.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"ExternalProjectsData\">\r\n    <projectState path=\"$PROJECT_DIR$/blog\">\r\n      <ProjectState />\r\n    </projectState>\r\n    <projectState path=\"$PROJECT_DIR$/efubaccount\">\r\n      <ProjectState />\r\n    </projectState>\r\n  </component>\r\n  <component name=\"ExternalProjectsManager\">\r\n    <system id=\"GRADLE\">\r\n      <state>\r\n        <projects_view>\r\n          <tree_state>\r\n            <expand>\r\n              <path>\r\n                <item name=\"\" type=\"6a2764b6:ExternalProjectsStructure$RootNode\" />\r\n                <item name=\"blog\" type=\"f1a62948:ProjectNode\" />\r\n              </path>\r\n            </expand>\r\n            <select />\r\n          </tree_state>\r\n        </projects_view>\r\n      </state>\r\n    </system>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\"><![CDATA[{\r\n  \"associatedIndex\": 8\r\n}]]></component>\r\n  <component name=\"ProjectId\" id=\"2x2l6v1CuVqnbvvX7VKJWRfkHV5\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"Gradle.blog [:BlogApplication.main()].executor\": \"Run\",\r\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"git-widget-placeholder\": \"week7\",\r\n    \"kotlin-language-version-configured\": \"true\",\r\n    \"last_opened_file_path\": \"C:/Users/양은서/Desktop/EFUB/efub5-backend-session/blog/build.gradle\"\r\n  }\r\n}]]></component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"jdk-17.0.10-temurin-17.0.10-3183f394aec4-87f3d08d\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"fe33e8c1-7582-4b77-8c74-2824bcc4bbce\" name=\"Changes\" comment=\"\" />\r\n      <created>1747143877345</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1747143877345</updated>\r\n    </task>\r\n    <servers />\r\n  </component>\r\n</project>
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -5,16 +5,9 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="fe33e8c1-7582-4b77-8c74-2824bcc4bbce" name="Changes" comment="">
+-      <change beforePath="$PROJECT_DIR$/blog/src/main/java/com/practice/blog/account/controller/AccountCommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog/src/main/java/com/practice/blog/account/controller/AccountCommentController.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/blog/src/main/java/com/practice/blog/account/controller/AccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog/src/main/java/com/practice/blog/account/controller/AccountController.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/blog/src/main/java/com/practice/blog/comment/controller/PostCommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog/src/main/java/com/practice/blog/comment/controller/PostCommentController.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/blog/src/main/java/com/practice/blog/comment/domain/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog/src/main/java/com/practice/blog/comment/domain/Comment.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/blog/src/main/java/com/practice/blog/comment/domain/CommentLike.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog/src/main/java/com/practice/blog/comment/domain/CommentLike.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/blog/src/main/java/com/practice/blog/comment/dto/request/CommentUpdateRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog/src/main/java/com/practice/blog/comment/dto/request/CommentUpdateRequest.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/blog/src/main/java/com/practice/blog/comment/dto/response/CommentResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog/src/main/java/com/practice/blog/comment/dto/response/CommentResponse.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/blog/src/main/java/com/practice/blog/comment/repository/CommentLikeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog/src/main/java/com/practice/blog/comment/repository/CommentLikeRepository.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/blog/src/main/java/com/practice/blog/comment/service/CommentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog/src/main/java/com/practice/blog/comment/service/CommentService.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/blog/src/main/java/com/practice/blog/post/service/PostService.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog/src/main/java/com/practice/blog/post/service/PostService.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/modules/blog.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/blog.main.iml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -52,9 +45,9 @@
+   <component name="MarkdownSettingsMigration">
+     <option name="stateVersion" value="1" />
+   </component>
+-  <component name="ProjectColorInfo"><![CDATA[{
+-  "associatedIndex": 8
+-}]]></component>
++  <component name="ProjectColorInfo">{
++  &quot;associatedIndex&quot;: 8
++}</component>
+   <component name="ProjectId" id="2x2l6v1CuVqnbvvX7VKJWRfkHV5" />
+   <component name="ProjectViewState">
+     <option name="hideEmptyMiddlePackages" value="true" />
+@@ -67,7 +60,7 @@
+     "RunOnceActivity.ShowReadmeOnStart": "true",
+     "git-widget-placeholder": "week7",
+     "kotlin-language-version-configured": "true",
+-    "last_opened_file_path": "C:/Users/양은서/Desktop/EFUB/efub5-backend-session/blog/build.gradle"
++    "last_opened_file_path": "C:/Users/양은서/Desktop/EFUB/EFUB-backend-assignment"
+   }
+ }]]></component>
+   <component name="SharedIndexes">
+Index: .idea/modules.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ProjectModuleManager\">\r\n    <modules>\r\n      <module fileurl=\"file://$PROJECT_DIR$/.idea/modules/blog.main.iml\" filepath=\"$PROJECT_DIR$/.idea/modules/blog.main.iml\" />\r\n      <module fileurl=\"file://$PROJECT_DIR$/.idea/efub5-backend-session.iml\" filepath=\"$PROJECT_DIR$/.idea/efub5-backend-session.iml\" />\r\n      <module fileurl=\"file://$PROJECT_DIR$/.idea/modules/efubaccount.main.iml\" filepath=\"$PROJECT_DIR$/.idea/modules/efubaccount.main.iml\" />\r\n      <module fileurl=\"file://$PROJECT_DIR$/.idea/modules/efubaccount.test.iml\" filepath=\"$PROJECT_DIR$/.idea/modules/efubaccount.test.iml\" />\r\n    </modules>\r\n  </component>\r\n</project>
+===================================================================
+diff --git a/.idea/modules.xml b/.idea/modules.xml
+--- a/.idea/modules.xml	
++++ b/.idea/modules.xml	
+@@ -2,7 +2,9 @@
+ <project version="4">
+   <component name="ProjectModuleManager">
+     <modules>
++      <module fileurl="file://$PROJECT_DIR$/.idea/modules/blog.iml" filepath="$PROJECT_DIR$/.idea/modules/blog.iml" />
+       <module fileurl="file://$PROJECT_DIR$/.idea/modules/blog.main.iml" filepath="$PROJECT_DIR$/.idea/modules/blog.main.iml" />
++      <module fileurl="file://$PROJECT_DIR$/.idea/modules/blog.test.iml" filepath="$PROJECT_DIR$/.idea/modules/blog.test.iml" />
+       <module fileurl="file://$PROJECT_DIR$/.idea/efub5-backend-session.iml" filepath="$PROJECT_DIR$/.idea/efub5-backend-session.iml" />
+       <module fileurl="file://$PROJECT_DIR$/.idea/modules/efubaccount.main.iml" filepath="$PROJECT_DIR$/.idea/modules/efubaccount.main.iml" />
+       <module fileurl="file://$PROJECT_DIR$/.idea/modules/efubaccount.test.iml" filepath="$PROJECT_DIR$/.idea/modules/efubaccount.test.iml" />
