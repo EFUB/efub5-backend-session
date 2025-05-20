@@ -15,9 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class AccountCommentController {
     private final CommentService commentService;
 
-    //작성자별 댓글 목록 조회
     @GetMapping
-    public ResponseEntity<AccountCommentResponse> getAccountComment(@PathVariable Long accountId) {
+    public ResponseEntity<AccountCommentResponse>getAccountComments(@PathVariable("accountId") Long accountId) {
         return ResponseEntity.ok(commentService.getAccountCommentList(accountId));
     }
 }
