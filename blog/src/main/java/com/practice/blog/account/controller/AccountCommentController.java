@@ -17,7 +17,8 @@ public class AccountCommentController {
     private final CommentService commentService;
 
     @GetMapping
-    public ResponseEntity<AccountCommentResponse>getAccountComments(@PathVariable("accountId") Long accountId) {
+    public ResponseEntity<AccountCommentResponse>  getAccountComments(@PathVariable("accountId") Long accountId) {
         return ResponseEntity.ok(commentService.getAccountCommentList(accountId));
     }
+
 }

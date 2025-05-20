@@ -26,4 +26,5 @@ public class AccountCommentResponse {
                 .count((long) commentList.size())
                 .build();
     }
+
 }
