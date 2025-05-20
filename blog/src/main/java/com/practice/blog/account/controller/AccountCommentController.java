@@ -15,8 +15,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class AccountCommentController {
     private final CommentService commentService;
 
+
+    // 댓글 조회 - accountId
     @GetMapping
-    public ResponseEntity<AccountCommentResponse>getAccountComments(@PathVariable("accountId") Long accountId) {
+    public ResponseEntity<AccountCommentResponse> getAccountComments(@PathVariable("accountId") Long accountId) {
         return ResponseEntity.ok(commentService.getAccountCommentList(accountId));
     }
+
 }
