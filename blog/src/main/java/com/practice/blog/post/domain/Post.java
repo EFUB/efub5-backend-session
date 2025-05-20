@@ -4,10 +4,7 @@ import com.practice.blog.account.entity.Account;
 import com.practice.blog.comment.domain.Comment;
 import com.practice.blog.global.domain.BaseEntity;
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,27 +19,35 @@ public class Post extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    // 제목
     private String title;
 
+    // 내용
     private String content;
 
+    // 글쓴이
     @ManyToOne(fetch = FetchType.LAZY)
     private Account writer;
 
-    private Long viewCount;
+    // 조회수
+    private long viewCount;
 
-    @OneToMany(mappedBy="post", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Comment> commentList = new ArrayList<>();
 
+    // 빌더
     @Builder
-    public Post(String title, String content, Account writer) {
+    public Post(String title, String content, Account writer){
         this.title = title;
         this.content = content;
         this.writer = writer;
         this.viewCount = 0L;
     }
 
-    public void changeContent(String newContent) {
-        this.content = newContent;
+    // 조회 수 증가
+
+    // 게시물 내용 수정
+    public void changeContent(String newContent){
+        this.content = content;
     }
 }

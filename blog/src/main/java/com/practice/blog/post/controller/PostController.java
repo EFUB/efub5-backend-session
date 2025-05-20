@@ -16,13 +16,14 @@ import java.net.URI;
 @RequiredArgsConstructor
 @RequestMapping("/posts")
 public class PostController {
+
     private final PostService postService;
 
     // 게시물 생성
     @PostMapping
-    public ResponseEntity<Void> createPost(@Valid @RequestBody PostCreateRequest request) {
-        Long id = postService.createPost(request);
-        return ResponseEntity.created(URI.create("/posts/"+id)).build();
+    public ResponseEntity<Void> createPost(@Valid @RequestBody PostCreateRequest request){
+        Long postId = postService.createPost(request);
+        return ResponseEntity.created(URI.create("/posts/"+postId)).build();
     }
 
     // 게시물 목록 조회
@@ -31,20 +32,24 @@ public class PostController {
         return ResponseEntity.ok(postService.getAllPosts());
     }
 
+    // 게시물 내용 조회
     @GetMapping("/{id}")
-    public ResponseEntity<PostResponse> getPost(@PathVariable("id") Long id){
-        return ResponseEntity.ok(postService.getPost(id));
+    public ResponseEntity<PostResponse> getPost(@PathVariable("id") Long postId){
+        return ResponseEntity.ok(postService.getPost(postId));
     }
 
+    // 게시물 내용 수정
     @PatchMapping("/{id}")
     public ResponseEntity<Void> updatePostContent(@PathVariable("id") Long postId,
                                                   @RequestHeader("Auth-Id") Long accountId,
                                                   @RequestHeader("Auth-Password") String password,
-                                                  @RequestBody PostUpdateRequest request) {
+                                                  @Valid @RequestBody PostUpdateRequest request
+                                                  ){
         postService.updatePostContent(postId, request, accountId, password);
         return ResponseEntity.noContent().build();
     }
 
+    // 게시물 삭제
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletePost(@PathVariable("id") Long postId,
                                            @RequestHeader("Auth-Id") Long accountId,

@@ -8,6 +8,7 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.context.annotation.EnableMBeanExport;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,12 +26,14 @@ public class Comment extends BaseEntity {
     @Column(length=1000)
     private String content;
 
+    //Comment-Account 매핑
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="account_id",updatable = false)
+    @JoinColumn(name = "account_id", updatable = false)
     private Account writer;
 
+    //Comment-Post 매핑
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="post_id", updatable = false)
+    @JoinColumn(name = "post_id", updatable = false)
     private Post post;
 
     @OneToMany(mappedBy = "comment", cascade = CascadeType.ALL, orphanRemoval = true)
