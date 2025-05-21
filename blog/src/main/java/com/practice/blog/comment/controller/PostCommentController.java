@@ -1,5 +1,6 @@
 package com.practice.blog.comment.controller;
 
+import com.practice.blog.comment.domain.Comment;
 import com.practice.blog.comment.dto.request.CommentRequest;
 import com.practice.blog.comment.dto.request.CommentUpdateRequest;
 import com.practice.blog.comment.dto.response.CommentResponse;

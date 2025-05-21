@@ -95,7 +95,7 @@ public class CommentService {
         Comment comment = findByCommentId(commentId);
         Account account = accountService.findByAccountId(accountId);
         CommentLike like = commentLikeRepository.findByCommentAndAccount(comment, account)
-                .orElseThrow(() -> new BlogException(ExceptionCode.LIKE_NOT_FOUND));
+                .orElseThrow(()-> new BlogException(ExceptionCode.LIKE_NOT_FOUND));
         commentLikeRepository.delete(like);
     }
 
