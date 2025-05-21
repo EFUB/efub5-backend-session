@@ -24,6 +24,7 @@ public enum ExceptionCode {
     LIKE_ALREADY_EXISTS(HttpStatus.CONFLICT, ClientExceptionCode.LIKE_ALREADY_EXISTS, "이미 좋아요를 누르셨습니다."),
     ALREADY_FOLLOWED(HttpStatus.CONFLICT, ClientExceptionCode.ALREADY_FOLLOWED, "이미 팔로우한 사용자입니다."),
 
+
     // 500 Internal Server Error
     INTERNAL_SERVER_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, ClientExceptionCode.INTERNAL_SERVER_ERROR, "예상치 못한 서버에러가 발생했습니다.");
 

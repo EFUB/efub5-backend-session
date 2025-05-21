@@ -78,8 +78,10 @@ public class CommentService {
     public void likeComment(Long commentId, Long accountId) {
         Comment comment = findByCommentId(commentId);
         Account account = accountService.findByAccountId(accountId);
+
         // 좋아요가 이미 존재하는지 여부 확인
         if (commentLikeRepository.existsByCommentAndAccount(comment, account)) {
+
             throw new BlogException(ExceptionCode.LIKE_ALREADY_EXISTS);
         }
         CommentLike like = CommentLike.builder()
@@ -96,6 +98,7 @@ public class CommentService {
         Account account = accountService.findByAccountId(accountId);
         CommentLike like = commentLikeRepository.findByCommentAndAccount(comment, account)
                 .orElseThrow(() -> new BlogException(ExceptionCode.LIKE_NOT_FOUND));
+
         commentLikeRepository.delete(like);
     }
 

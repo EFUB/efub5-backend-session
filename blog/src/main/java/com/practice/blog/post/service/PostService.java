@@ -24,6 +24,7 @@ public class PostService {
     private final PostRepository postRepository;
     private final AccountService accountService;
 
+
     @Transactional
     public Long createPost(PostCreateRequest postCreateRequest) {
         Long accountId = postCreateRequest.accountId();

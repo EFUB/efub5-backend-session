@@ -25,4 +25,5 @@ public enum ClientExceptionCode {
     ALREADY_FOLLOWED,
     FOLLOW_NOT_FOUND
 
+
 }

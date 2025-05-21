@@ -59,7 +59,7 @@ public class PostCommentController {
         commentService.likeComment(commentId, accountId);
         return ResponseEntity.status(HttpStatus.CREATED).body("좋아요를 눌렀습니다.");
     }
-
+  
     // 댓글 좋아요 취소
     @DeleteMapping("/comments/{commentId}/like")
     public ResponseEntity<String> unlikeComment(@PathVariable("commentId") Long commentId,

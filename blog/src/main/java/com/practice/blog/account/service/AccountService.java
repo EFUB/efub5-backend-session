@@ -71,4 +71,5 @@ public class AccountService {
         return accountsRepository.findByEmail(email)
                 .orElseThrow(()-> new BlogException(ExceptionCode.ACCOUNT_NOT_FOUND));
     }
+
 }
