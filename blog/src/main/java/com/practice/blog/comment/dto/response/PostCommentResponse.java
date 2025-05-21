@@ -23,6 +23,5 @@ public class PostCommentResponse {
                 .postCommentList(commentList.stream().map(CommentResponse::of).collect(Collectors.toList()))
                 .count((long) commentList.size())
                 .build();
-
     }
 }
