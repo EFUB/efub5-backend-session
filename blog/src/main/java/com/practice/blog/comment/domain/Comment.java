@@ -10,6 +10,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.context.annotation.EnableMBeanExport;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -33,10 +36,17 @@ public class Comment extends BaseEntity {
     @JoinColumn(name = "post_id", updatable = false)
     private Post post;
 
+    @OneToMany(mappedBy = "comment", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<CommentLike> commentLikeList = new ArrayList<>();
+
     @Builder
     public Comment(String content, Account writer, Post post) {
         this.content = content;
         this.writer = writer;
         this.post = post;
+    }
+
+    public void updateContent(String newContent) {
+        this.content = newContent;
     }
 }

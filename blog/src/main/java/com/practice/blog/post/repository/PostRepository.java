@@ -15,7 +15,7 @@ public interface PostRepository extends JpaRepository<Post, Long> {
     Optional<Post> findById(Long id);
 
     // 최신순으로 모든 게시글 불러오기
-    List<Post> findByOrderByCreatedAtDesc();
+    List<Post> findAllByOrderByCreatedAtDesc();
 
     // 조회수 상승
     @Modifying(clearAutomatically = true)
