@@ -8,7 +8,6 @@ import com.practice.blog.comment.domain.CommentLike;
 import com.practice.blog.comment.dto.request.CommentRequest;
 import com.practice.blog.comment.dto.request.CommentUpdateRequest;
 import com.practice.blog.comment.dto.response.CommentResponse;
-//import com.practice.blog.comment.repository.CommentLikeRepository;
 import com.practice.blog.comment.repository.CommentLikeRepository;
 import com.practice.blog.comment.repository.CommentRepository;
 import com.practice.blog.global.exception.BlogException;
@@ -64,7 +63,7 @@ public class CommentService {
         comment.updateContent(request.getContent());
         return CommentResponse.of(comment);
     }
-//
+
     // 댓글 삭제
     @Transactional
     public void deleteComment(Long commentId, Long accountId, String password) {
@@ -73,14 +72,16 @@ public class CommentService {
         authorizeCommentWriter(comment, account, password);
         commentRepository.delete(comment);
     }
-//
+
     // 댓글 좋아요 등록
     @Transactional
     public void likeComment(Long commentId, Long accountId) {
         Comment comment = findByCommentId(commentId);
         Account account = accountService.findByAccountId(accountId);
-        //좋아요가 이미 존재하는지 여부 확인
-        if(commentLikeRepository.existsByCommentAndAccount(comment, account)) {
+
+        // 좋아요가 이미 존재하는지 여부 확인
+        if (commentLikeRepository.existsByCommentAndAccount(comment, account)) {
+
             throw new BlogException(ExceptionCode.LIKE_ALREADY_EXISTS);
         }
         CommentLike like = CommentLike.builder()
@@ -96,7 +97,8 @@ public class CommentService {
         Comment comment = findByCommentId(commentId);
         Account account = accountService.findByAccountId(accountId);
         CommentLike like = commentLikeRepository.findByCommentAndAccount(comment, account)
-                .orElseThrow(()-> new BlogException(ExceptionCode.LIKE_NOT_FOUND));
+                .orElseThrow(() -> new BlogException(ExceptionCode.LIKE_NOT_FOUND));
+
         commentLikeRepository.delete(like);
     }
 

@@ -22,12 +22,13 @@ import java.util.List;
 public class PostService {
 
     private final PostRepository postRepository;
-    private final AccountService accountsService;
+    private final AccountService accountService;
+
 
     @Transactional
     public Long createPost(PostCreateRequest postCreateRequest) {
         Long accountId = postCreateRequest.accountId();
-        Account writerAccount = accountsService.findByAccountId(accountId);
+        Account writerAccount = accountService.findByAccountId(accountId);
         Post newPost = postCreateRequest.toEntity(writerAccount);
         postRepository.save(newPost);
         return newPost.getId();
@@ -50,7 +51,7 @@ public class PostService {
     @Transactional
     public void updatePostContent(Long postId, PostUpdateRequest request, Long accountId, String password) {
         Post post = findByPostId(postId);
-        Account account = accountsService.findByAccountId(accountId);
+        Account account = accountService.findByAccountId(accountId);
         authorizePostWriter(post, account, password);
         post.changeContent(request.content());
     }
@@ -58,7 +59,7 @@ public class PostService {
     @Transactional
     public void deletePost(Long postId, Long accountId, String password) {
         Post post = findByPostId(postId);
-        Account account = accountsService.findByAccountId(accountId);
+        Account account = accountService.findByAccountId(accountId);
         authorizePostWriter(post, account, password);
         postRepository.delete(post);
     }

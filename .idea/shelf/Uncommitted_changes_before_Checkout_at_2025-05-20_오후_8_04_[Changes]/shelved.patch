@@ -1,0 +1,19 @@
+Index: blog/src/main/java/com/practice/blog/follow/controller/FollowController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.practice.blog.follow.controller;\r\n\r\nimport com.practice.blog.account.entity.Account;\r\nimport com.practice.blog.account.service.AccountService;\r\nimport com.practice.blog.follow.domain.Follow;\r\nimport com.practice.blog.follow.dto.request.FollowRequestDto;\r\n//import com.practice.blog.follow.dto.response.FollowListResponseDto;\r\nimport com.practice.blog.follow.dto.response.FollowStatusResponseDto;\r\nimport com.practice.blog.follow.service.FollowService;\r\nimport jakarta.validation.Valid;\r\nimport lombok.RequiredArgsConstructor;\r\nimport org.springframework.beans.factory.annotation.Autowired;\r\nimport org.springframework.http.HttpStatus;\r\nimport org.springframework.http.ResponseEntity;\r\nimport org.springframework.web.bind.annotation.*;\r\n\r\n@RestController\r\n@RequestMapping(\"/follows\")\r\n@RequiredArgsConstructor\r\npublic class FollowController {\r\n\r\n    private final FollowService followService;\r\n    private final AccountService accountService;\r\n\r\n    // 팔로우 걸기(추가)\r\n    @PostMapping(\"/{accountId}\")\r\n    public ResponseEntity<FollowStatusResponseDto> addFollow(@PathVariable(\"accountId\") Long accountId,\r\n                                                             @RequestBody @Valid FollowRequestDto requestDto)){\r\n\r\n        FollowStatusResponseDto responseDto = followService.addFollow(accountId, requestDto);\r\n        return ResponseEntity.status(HttpStatus.CREATED).body(responseDto);\r\n    }\r\n\r\n//    // 팔로잉 & 팔로워 리스트 조회\r\n//    public ResponseEntity<FollowListResponseDto> getFollowList(){\r\n//        return ResponseEntity.ok(responseDto);\r\n//    }\r\n//\r\n//    // 팔로우 여부 조회\r\n//    public ResponseEntity<FollowStatusResponseDto> searchAccount(){\r\n//        return ResponseEntity.status(HttpStatus.CREATED).body(responseDto);\r\n//    }\r\n//\r\n//    // 팔로우 취소\r\n//    public ResponseEntity<FollowStatusResponseDto> deleteFollow(){\r\n//        return ResponseEntity.ok(responseDto);\r\n//    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/blog/src/main/java/com/practice/blog/follow/controller/FollowController.java b/blog/src/main/java/com/practice/blog/follow/controller/FollowController.java
+--- a/blog/src/main/java/com/practice/blog/follow/controller/FollowController.java	
++++ b/blog/src/main/java/com/practice/blog/follow/controller/FollowController.java	
+@@ -25,7 +25,7 @@
+     // 팔로우 걸기(추가)
+     @PostMapping("/{accountId}")
+     public ResponseEntity<FollowStatusResponseDto> addFollow(@PathVariable("accountId") Long accountId,
+-                                                             @RequestBody @Valid FollowRequestDto requestDto)){
++                                                             @RequestBody @Valid FollowRequestDto requestDto){
+ 
+         FollowStatusResponseDto responseDto = followService.addFollow(accountId, requestDto);
+         return ResponseEntity.status(HttpStatus.CREATED).body(responseDto);
