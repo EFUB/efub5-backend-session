@@ -16,7 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
-public class AccountsService {
+public class AccountService {
 
     private final AccountsRepository accountsRepository;
 
@@ -63,6 +63,12 @@ public class AccountsService {
     @Transactional(readOnly=true)
     public Account findByAccountId(Long accountId) {
         return accountsRepository.findByAccountId(accountId)
+                .orElseThrow(()-> new BlogException(ExceptionCode.ACCOUNT_NOT_FOUND));
+    }
+
+    @Transactional(readOnly = true)
+    public Account findByEmail(String email){
+        return accountsRepository.findByEmail(email)
                 .orElseThrow(()-> new BlogException(ExceptionCode.ACCOUNT_NOT_FOUND));
     }
 }
