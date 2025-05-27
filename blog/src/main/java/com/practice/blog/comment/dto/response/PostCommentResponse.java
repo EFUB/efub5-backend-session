@@ -1,7 +1,6 @@
-package com.practice.blog.post.dto.response;
+package com.practice.blog.comment.dto.response;
 
 import com.practice.blog.comment.domain.Comment;
-import com.practice.blog.comment.dto.response.CommentResponse;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -18,11 +17,12 @@ public class PostCommentResponse {
     private final List<CommentResponse> postCommentList;
     private final Long count;
 
-    public static PostCommentResponse of(Long postId, List<Comment> commentList){
+    public static PostCommentResponse of(Long postId, List<Comment> commentList) {
         return PostCommentResponse.builder()
                 .postId(postId)
                 .postCommentList(commentList.stream().map(CommentResponse::of).collect(Collectors.toList()))
                 .count((long) commentList.size())
                 .build();
+
     }
 }

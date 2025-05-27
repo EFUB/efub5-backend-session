@@ -19,7 +19,7 @@ public class AccountCommentResponse {
     private final List<CommentResponse> accountCommentList;
     private final Long count;
 
-    public static AccountCommentResponse of(Account account, List<Comment> commentList){
+    public static AccountCommentResponse of(Account account, List<Comment> commentList) {
         return AccountCommentResponse.builder()
                 .accountNickname(account.getNickname())
                 .accountCommentList(commentList.stream().map(CommentResponse::of).collect(Collectors.toList()))
