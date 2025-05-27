@@ -54,22 +54,21 @@ public class CommentService {
         return AccountCommentResponse.of(account, commentList);
     }
 
-    //    // 댓글 수정
+    // 댓글 수정
     @Transactional
     public CommentResponse updateComment(Long commentId, CommentUpdateRequest request, Long accountId, String password) {
-        Comment comment=findByCommentId(commentId);
-        Account account=accountService.findByAccountId(accountId);
+        Comment comment = findByCommentId(commentId);
+        Account account = accountService.findByAccountId(accountId);
         authorizeCommentWriter(comment, account, password);
         comment.updateContent(request.getContent());
         return CommentResponse.of(comment);
-
     }
 
     // 댓글 삭제
     @Transactional
     public void deleteComment(Long commentId, Long accountId, String password) {
-        Comment comment=findByCommentId(commentId);
-        Account account=accountService.findByAccountId(accountId);
+        Comment comment = findByCommentId(commentId);
+        Account account = accountService.findByAccountId(accountId);
         authorizeCommentWriter(comment, account, password);
         commentRepository.delete(comment);
     }
@@ -77,12 +76,13 @@ public class CommentService {
     // 댓글 좋아요 등록
     @Transactional
     public void likeComment(Long commentId, Long accountId) {
-        Comment comment=findByCommentId(commentId);
-        Account account=accountService.findByAccountId(accountId);
-        if(commentLikeRepository.existsByCommentAndAccount(comment, account)){
+        Comment comment = findByCommentId(commentId);
+        Account account = accountService.findByAccountId(accountId);
+        // 좋아요가 이미 존재하는지 여부 확인
+        if (commentLikeRepository.existsByCommentAndAccount(comment, account)) {
             throw new BlogException(ExceptionCode.LIKE_ALREADY_EXISTS);
         }
-        CommentLike like=CommentLike.builder()
+        CommentLike like = CommentLike.builder()
                 .comment(comment)
                 .account(account)
                 .build();
@@ -92,10 +92,10 @@ public class CommentService {
     // 댓글 좋아요 취소
     @Transactional
     public void unlikeComment(Long commentId, Long accountId) {
-        Comment comment=findByCommentId(commentId);
-        Account account=accountService.findByAccountId(accountId);
-        CommentLike like=commentLikeRepository.findByCommentAndAccount(comment, account)
-                .orElseThrow(()->new BlogException(ExceptionCode.LIKE_NOT_FOUND));
+        Comment comment = findByCommentId(commentId);
+        Account account = accountService.findByAccountId(accountId);
+        CommentLike like = commentLikeRepository.findByCommentAndAccount(comment, account)
+                .orElseThrow(() -> new BlogException(ExceptionCode.LIKE_NOT_FOUND));
         commentLikeRepository.delete(like);
     }
 

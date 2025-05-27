@@ -37,17 +37,17 @@ public class PostCommentController {
     @PatchMapping("/comments/{commentId}")
     public ResponseEntity<CommentResponse> updateComment(@PathVariable("commentId") Long commentId,
                                                          @RequestBody @Valid CommentUpdateRequest request,
-                                                         @RequestHeader("Auth-id") Long accountId,
-                                                         @RequestHeader("Auth-password") String password) {
-        CommentResponse response=commentService.updateComment(commentId, request, accountId, password);
+                                                         @RequestHeader("Auth-Id") Long accountId,
+                                                         @RequestHeader("Auth-Password") String password) {
+        CommentResponse response = commentService.updateComment(commentId, request, accountId, password);
         return ResponseEntity.ok(response);
     }
 
     // 댓글 삭제
     @DeleteMapping("/comments/{commentId}")
     public ResponseEntity<Void> deleteComment(@PathVariable("commentId") Long commentId,
-                                              @RequestHeader("Auth-id") Long accountId,
-                                              @RequestHeader("Auth-password") String password) {
+                                              @RequestHeader("Auth-Id") Long accountId,
+                                              @RequestHeader("Auth-Password") String password) {
         commentService.deleteComment(commentId, accountId, password);
         return ResponseEntity.noContent().build();
     }
@@ -55,7 +55,7 @@ public class PostCommentController {
     // 댓글 좋아요
     @PostMapping("/comments/{commentId}/like")
     public ResponseEntity<String> likeComment(@PathVariable("commentId") Long commentId,
-                                              @RequestHeader("Auth-id") Long accountId) {
+                                              @RequestHeader("Auth-Id") Long accountId) {
         commentService.likeComment(commentId, accountId);
         return ResponseEntity.status(HttpStatus.CREATED).body("좋아요를 눌렀습니다.");
     }
