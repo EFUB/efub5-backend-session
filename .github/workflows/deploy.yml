@@ -17,8 +17,8 @@ jobs:
           distribution: 'zulu'
 
       - name: Make application.yml
-        run: 
-          mkdir ./blog/src/main/resources
+        run: |
+          mkdir -p ./blog/src/main/resources
           cd ./blog/src/main/resources
           touch ./application.yml
           echo "${{ secrets.APPLICATION }}" > ./application.yml
