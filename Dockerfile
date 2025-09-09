@@ -4,6 +4,6 @@ FROM arm64v8/eclipse-temurin:17-jdk-focal
 
 WORKDIR /app
 
-COPY build/libs/blog-0.0.1-SNAPSHOT.jar app.jar
+COPY blog/build/libs/blog-0.0.1-SNAPSHOT.jar app.jar
 
 ENTRYPOINT ["java", "-jar", "-Duser.timezone=Asia/Seoul", "app.jar"]
