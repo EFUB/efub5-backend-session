@@ -42,7 +42,7 @@ jobs:
 
       # build 파일 이름 확인
       - name: Check build output
-        run: ls -R ./build/libs
+        run: ls -R .blog/build/libs
 
 
       # DockerHub 로그인
