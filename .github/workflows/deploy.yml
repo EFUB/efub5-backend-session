@@ -53,8 +53,8 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: ./blog          # 빌드 컨텍스트 지정
-          file: ./Dockerfile  # Dockerfile 경로 지정
-          platforms: linux/arm64/v8 # 빌드 플랫폼 지정
+          file: ./Dockerfile       # Dockerfile 경로 지정
+          platforms: linux/amd64   # 빌드 플랫폼 지정
           push: true               # 빌드 후 푸시 여부
           tags: ${{ secrets.DOCKER_REPO }}:latest
 
