@@ -1,6 +1,6 @@
 # 사용할 base 이미지 선택
 # ec2 아키텍쳐가 arm64v8이라서 적절한 이미지 가져옴
-FROM arm64v8/eclipse-temurin:17-jdk-focal
+FROM eclipse-temurin:17-jdk-focal
 
 WORKDIR /app
 
