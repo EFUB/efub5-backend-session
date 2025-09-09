@@ -40,6 +40,11 @@ jobs:
           chmod +x ./gradlew
           ./gradlew build -x test
 
+      # build 파일 이름 확인
+      - name: Check build output
+        run: ls -R ./build/libs
+
+
       # DockerHub 로그인
       - name: Login to DockerHub
         uses: docker/login-action@v1
