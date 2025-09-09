@@ -1,7 +1,9 @@
 FROM openjdk:17-slim
 
-ARG FAR_FILE=build/libs/*.jar
+WORKDIR /app
 
-COPY ${JAR_FILE} app.jar
+# 빌드한 JAR 파일을 컨테이너로 복사
+COPY build/libs/*.jar app.jar
 
-ENTRYPOINT ["java"< "-jar", "-Duser.timezone=Asia/Seoul", "/app.jar"]
+# 컨테이너 실행 명령
+ENTRYPOINT ["java", "-Duser.timezone=Asia/Seoul", "-jar", "app.jar"]
