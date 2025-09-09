@@ -48,7 +48,7 @@ jobs:
         with:
           context: ./blog
           file: ./blog/Dockerfile
-          platforms: linux/arm64/v8
+          platforms: linux/amd64
           push: true
           tags: ${{ secrets.DOCKER_REPO }}:latest
       - name: Deploy to Server
