@@ -1,4 +1,5 @@
-FROM openjdk:17
-WORKDIR /app
-COPY blog/build/libs/blog-0.0.1-SNAPSHOT.jar app.jar
+# 사용할 base 이미지
+FROM openjdk:17-slim
+ARG JAR_FILE=blog/build/libs/*.jar
+COPY ${JAR_FILE} app.jar
 ENTRYPOINT ["java", "-jar", "app.jar"]
