@@ -1,6 +1,7 @@
 package com.practice.blog.post.service;
 
 import com.practice.blog.account.entity.Account;
+import com.practice.blog.account.service.AccountService;
 import com.practice.blog.account.service.AccountsService;
 import com.practice.blog.global.exception.BlogException;
 import com.practice.blog.global.exception.ExceptionCode;
@@ -22,12 +23,12 @@ import java.util.List;
 public class PostService {
 
     private final PostRepository postRepository;
-    private final AccountsService accountsService;
+    private final AccountService accountService;
 
     @Transactional
     public Long createPost(PostCreateRequest postCreateRequest) {
         Long accountId = postCreateRequest.accountId();
-        Account writerAccount = accountsService.findByAccountId(accountId);
+        Account writerAccount = accountService.findByAccountId(accountId);
         Post newPost = postCreateRequest.toEntity(writerAccount);
         postRepository.save(newPost);
         return newPost.getId();
@@ -42,7 +43,7 @@ public class PostService {
 
     @Transactional(readOnly = true)
     public PostListResponse getAllPosts() {
-        List<PostSummary> postSummaries = postRepository.findAllByOrderByCreatedAtDesc().stream()
+        List<PostSummary> postSummaries = postRepository.findALLByOrderByCreatedAtDesc().stream()
                 .map(PostSummary::from).toList();
         return new PostListResponse(postSummaries, postRepository.count());
     }
@@ -50,7 +51,7 @@ public class PostService {
     @Transactional
     public void updatePostContent(Long postId, PostUpdateRequest request, Long accountId, String password) {
         Post post = findByPostId(postId);
-        Account account = accountsService.findByAccountId(accountId);
+        Account account = accountService.findByAccountId(accountId);
         authorizePostWriter(post, account, password);
         post.changeContent(request.content());
     }
@@ -58,7 +59,7 @@ public class PostService {
     @Transactional
     public void deletePost(Long postId, Long accountId, String password) {
         Post post = findByPostId(postId);
-        Account account = accountsService.findByAccountId(accountId);
+        Account account = accountService.findByAccountId(accountId);
         authorizePostWriter(post, account, password);
         postRepository.delete(post);
     }
