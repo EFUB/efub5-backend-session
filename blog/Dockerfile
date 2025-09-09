@@ -1,4 +1,4 @@
-From arm64v8/eclipse-temurin:17-jdk-focal
+FROM openjdk:17-slim
 
 ARG FAR_FILE=build/libs/*.jar
 
