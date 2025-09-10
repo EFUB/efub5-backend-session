@@ -49,7 +49,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: ./blog
-          file: ./blog/Dockerfile
+          file: ./Dockerfile
           platforms: linux/amd64/v8
           push: true
           tags: ${{ secrets.DOCKER_REPO }}:latest
