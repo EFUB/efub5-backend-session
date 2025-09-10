@@ -1,5 +1,5 @@
 # 사용할 base 이미지
 FROM openjdk:17-slim
-ARG JAR_FILE=blog/build/libs/*.jar
+ARG JAR_FILE=build/libs/*.jar
 COPY ${JAR_FILE} app.jar
 ENTRYPOINT ["java", "-jar", "app.jar"]
