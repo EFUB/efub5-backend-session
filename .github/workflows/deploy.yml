@@ -1,1 +1,97 @@
+# 워크플로우 이름 설정
+name: CI/CD with Docker
 
+# 워크플로우 실행 조건 설정
+on:
+  push:
+    # main 브랜치에 push 이벤트가 발생했을 때 실행됩니다.
+    # "week7" 등 사용하는 브랜치 이름으로 변경해주세요.
+    branches: ["week9"]
+
+# 작업(job) 목록
+jobs:
+  # deploy 라는 이름의 job
+  deploy:
+    # 실행될 가상 환경 지정
+    runs-on: ubuntu-latest
+    
+    # job의 단계(step) 목록
+    steps:
+      # 1. 소스코드 체크아웃
+      - name: Checkout Source Code
+        uses: actions/checkout@v3
+
+      # 2. JDK 17 설치
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      # 3. application.yml 파일 생성 (GitHub Secrets 사용)
+      - name: Set up application.yml
+        run: |
+          # blog/src/main/resources 디렉토리로 이동
+          cd ./blog/src/main/resources
+          # GitHub Secrets에 저장된 APPLICATION_YML 값을 application.yml 파일로 생성
+          echo "${{ secrets.APPLICATION_YML }}" > ./application.yml
+
+      # 4. Gradle 캐싱 설정 (빌드 속도 향상)
+      - name: Gradle Caching
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+
+      # 5. Gradle로 프로젝트 빌드
+      - name: Build with Gradle
+        run: |
+          # blog 디렉토리로 이동
+          cd ./blog
+          # gradlew 파일에 실행 권한 부여
+          chmod +x ./gradlew
+          # 테스트를 제외하고 빌드 실행
+          ./gradlew build -x test
+
+      # 6. Docker Hub 로그인
+      - name: Login to DockerHub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      # 7. Docker 이미지 빌드 및 푸시
+      - name: Docker build & push
+        uses: docker/build-push-action@v4
+        with:
+          # Dockerfile이 있는 경로 (빌드 컨텍스트)
+          context: ./blog
+          # Dockerfile 파일 경로
+          file: ./blog/Dockerfile
+          # 빌드할 플랫폼 지정 (ARM64)
+          platforms: linux/arm64/v8
+          # 빌드 후 Docker Hub에 푸시
+          push: true
+          # 이미지 태그 설정 (예: laura-jung/efub-backend:latest)
+          tags: ${{ secrets.DOCKER_REPO }}:latest
+
+      # 8. SSH를 통해 배포 서버에 접속하여 배포 스크립트 실행
+      - name: Deploy to Server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.KEY }}
+          script: |
+            # 기존에 실행 중인 모든 도커 컨테이너를 강제로 중지하고 삭제
+            sudo docker rm -f $(sudo docker ps -qa)
+            # Docker Hub에서 최신 버전의 이미지를 pull
+            sudo docker pull ${{ secrets.DOCKER_REPO }}:latest
+            # pull 받은 최신 이미지를 컨테이너로 실행 (8080 포트 연결)
+            sudo docker run -d -p 8080:8080 ${{ secrets.DOCKER_REPO }}:latest
+            # 사용하지 않는 Docker 이미지 정리
+            sudo docker image prune -f
