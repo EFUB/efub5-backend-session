@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/accounts/{accountId}/comments")
 public class AccountCommentController {
     private final CommentService commentService;
-
+    // cicd test
     @GetMapping
     public ResponseEntity<AccountCommentResponse>getAccountComments(@PathVariable("accountId") Long accountId){
         return ResponseEntity.ok(commentService.getAccountCommentList(accountId));
