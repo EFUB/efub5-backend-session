@@ -1,13 +1,13 @@
 package com.practice.blog.account.controller;
 
 import com.practice.blog.account.dto.response.AccountResponseDto;
-import com.practice.blog.account.service.AccountService;
 import com.practice.blog.account.dto.response.CreateAccountResponseDto;
 import com.practice.blog.account.dto.request.BioUpdateRequestDto;
 import com.practice.blog.account.dto.request.CreateAccountRequestDto;
+import com.practice.blog.account.service.AccountService;
 import jakarta.validation.Valid;
-import org.springframework.http.HttpStatus;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,24 +17,6 @@ import org.springframework.web.bind.annotation.*;
 public class AccountController {
 
     private final AccountService accountService;
-
-    // Redis에서 id로 이메일 조회
-    @GetMapping("/redis/{accountId}")
-    @ResponseStatus(value = HttpStatus.OK)
-    public String getEmailByIdFromRedis(@PathVariable Long accountId) {
-        return accountService.findEmailByIdFromRedis(accountId);
-    }
-
-
-
-    // Mongodb에서  id로 닉네임 조회
-    @GetMapping("mongodb/{accountId}")
-    @ResponseStatus(value = HttpStatus.OK)
-    public String getNicknameByIdFromMongod(@PathVariable Long accountId) {
-        return accountService.findNicknameByIdFromMongo(accountId);
-    }
-
-
 
     // 회원 조회: GET /accounts/{accountId}
     @GetMapping("/{accountId}")
