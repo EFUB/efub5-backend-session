@@ -16,23 +16,20 @@ public class UserController {
     private final UserService userService;
 
     // 회원 생성
-    @PostMapping
-    public ResponseEntity<User> createUser(@RequestBody UserRequestDTO requestDTO) {
-        User savedUser = userService.save(requestDTO);
-        return ResponseEntity.status(HttpStatus.CREATED).body(savedUser);
-    }
+//    @PostMapping
+//    public ResponseEntity<User> createUser(@RequestBody UserRequestDTO requestDTO) {
+//
+//    }
 
     // 회원 조회 (id)
-    @GetMapping("/{id}")
-    public ResponseEntity<User> getUser(@PathVariable Long id) {
-        User user = userService.findById(id);
-        return ResponseEntity.ok(user);
-    }
+//    @GetMapping("/{id}")
+//    public ResponseEntity<User> getUser(@PathVariable Long id) {
+//
+//    }
 
     // 회원 삭제 (id)
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
-        userService.delete(id);
-        return ResponseEntity.noContent().build();
-    }
+//    @DeleteMapping("/{id}")
+//    public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
+//
+//    }
 }
