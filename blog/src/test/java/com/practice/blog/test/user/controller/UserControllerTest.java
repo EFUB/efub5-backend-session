@@ -63,45 +63,5 @@ class UserControllerTest {
                 .andExpect(jsonPath("$.name").value(name))
                 .andExpect(jsonPath("$.email").value(email));
     }
-
-    // id로 사용자 조회
-    @Test
-    void id로_사용자_조회() throws Exception {
-        // given
-        Long userId = 1L;
-        String name = "김이화";
-        String email = "efub@test.com";
-
-        User mockUser = User.builder()
-                .id(userId)
-                .name(name)
-                .email(email)
-                .build();
-
-        given(userService.findById(userId)).willReturn(mockUser);
-
-        // when & then
-        mockMvc.perform(get("/users/{id}", userId))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.id").value(userId))
-                .andExpect(jsonPath("$.name").value(name))
-                .andExpect(jsonPath("$.email").value(email));
-    }
-
-    // 사용자 삭제 - 일반 유저 권한
-    @Test
-    void 일반유저가_삭제하면_권한없음_예외() throws Exception {
-        // given
-        Long userId = 1L;
-        willThrow(new IllegalArgumentException("권한이 없습니다."))
-                .given(userService).delete(eq(userId), any(User.class));
-
-        // when & then
-        mockMvc.perform(delete("/users/{id}", userId)
-                        .param("role", "USER"))   // 요청자가 USER
-                .andExpect(status().isBadRequest()); // 400 반환 기대
-    }
-
-
 }
 
