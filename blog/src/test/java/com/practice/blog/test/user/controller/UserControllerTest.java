@@ -5,6 +5,7 @@ import com.practice.blog.test.user.dto.UserRequestDTO;
 import com.practice.blog.test.user.entity.User;
 import com.practice.blog.test.user.service.UserService;
 import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentMatchers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -14,8 +15,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.BDDMockito.given;
-import static org.mockito.BDDMockito.willDoNothing;
+import static org.mockito.BDDMockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -35,7 +35,7 @@ class UserControllerTest {
 
     // 사용자 생성
     @Test
-    void make_user() throws Exception {
+    void 사용자_생성() throws Exception {
         // given
         String name = "김이화";
         String email = "efub@test.com";
@@ -66,7 +66,7 @@ class UserControllerTest {
 
     // id로 사용자 조회
     @Test
-    void get_user_by_id() throws Exception {
+    void id로_사용자_조회() throws Exception {
         // given
         Long userId = 1L;
         String name = "김이화";
@@ -88,18 +88,18 @@ class UserControllerTest {
                 .andExpect(jsonPath("$.email").value(email));
     }
 
-    // 사용자 삭제
+    // 사용자 삭제 - 일반 유저 권한
     @Test
-    void delete_user() throws Exception {
+    void 일반유저가_삭제하면_권한없음_예외() throws Exception {
         // given
         Long userId = 1L;
-
-        // userService.delete()는 void 반환 → 별도 반환값 설정할 필요 없음
-        willDoNothing().given(userService).delete(userId);
+        willThrow(new IllegalArgumentException("권한이 없습니다."))
+                .given(userService).delete(eq(userId), any(User.class));
 
         // when & then
-        mockMvc.perform(delete("/users/{id}", userId))
-                .andExpect(status().isNoContent());  // 보통 204 No Content 반환
+        mockMvc.perform(delete("/users/{id}", userId)
+                        .param("role", "USER"))   // 요청자가 USER
+                .andExpect(status().isBadRequest()); // 400 반환 기대
     }
 
 
