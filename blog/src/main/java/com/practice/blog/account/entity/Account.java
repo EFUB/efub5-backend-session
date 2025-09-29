@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Getter @Setter
+@Getter
 @Table(name = "accounts")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Account {
@@ -59,5 +59,9 @@ public class Account {
 
     public void updateNickname(String nickname) {
         this.nickname = nickname;
+    }
+
+    public void setAccountId(Long accountId) {
+        this.accountId = accountId;
     }
 }
