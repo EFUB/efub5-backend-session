@@ -3,10 +3,7 @@ package com.practice.blog.account.entity;
 import com.practice.blog.comment.domain.Comment;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,5 +59,9 @@ public class Account {
 
     public void updateNickname(String nickname) {
         this.nickname = nickname;
+    }
+
+    public void setAccountId(Long accountId) {
+        this.accountId = accountId;
     }
 }
