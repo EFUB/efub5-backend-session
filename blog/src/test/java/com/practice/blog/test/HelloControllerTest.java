@@ -22,10 +22,10 @@ class HelloControllerTest {
     @Test
     void return_hello() throws Exception {
 
-        // Given
+        //given
         String expectedResponse = "Hello World";
 
-        // When & Then
+        // when then
         mockMvc.perform(get("/helloworld"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(expectedResponse));
