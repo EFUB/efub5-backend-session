@@ -7,5 +7,5 @@ CREATE TABLE IF NOT EXISTS account (
     status VARCHAR(255) NOT NULL
 );
 
-INSERT INTO account (email, password, nickname, bio, status) VALUES
+INSERT INTO account (email, encoded_password, nickname, bio, status) VALUES
 ('efub@example.com', 'testpw', 'efub', 'This is a bio', 'ACTIVE');
