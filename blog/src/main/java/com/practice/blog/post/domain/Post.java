@@ -11,7 +11,7 @@ import java.util.List;
 
 
 @Entity
-@Getter @Setter
+@Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Post extends BaseEntity {
 
@@ -41,5 +41,9 @@ public class Post extends BaseEntity {
 
     public void changeContent(String newContent) {
         this.content = newContent;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }
