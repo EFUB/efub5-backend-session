@@ -60,4 +60,8 @@ public class Account {
     public void updateNickname(String nickname) {
         this.nickname = nickname;
     }
+
+    public void setAccountId(Long accountId) {
+        this.accountId = accountId;
+    }
 }
