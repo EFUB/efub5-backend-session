@@ -1,0 +1,30 @@
+
+> Task :compileJava FAILED
+/Users/yuna/Desktop/EFUB/efub5-backend-session/blog/src/main/java/com/practice/blog/account/repository/AccountDocumentRepository.java:6: error: package org.springframework.data.mongodb.repository does not exist
+import org.springframework.data.mongodb.repository.MongoRepository;
+                                                  ^
+/Users/yuna/Desktop/EFUB/efub5-backend-session/blog/src/main/java/com/practice/blog/account/repository/AccountDocumentRepository.java:9: error: cannot find symbol
+public interface AccountDocumentRepository extends MongoRepository<AccountDocument, String> {
+                                                   ^
+  symbol: class MongoRepository
+/Users/yuna/Desktop/EFUB/efub5-backend-session/blog/src/main/java/com/practice/blog/account/entity/AccountDocument.java:7: error: package org.springframework.data.mongodb.core.mapping does not exist
+import org.springframework.data.mongodb.core.mapping.Document;
+                                                    ^
+/Users/yuna/Desktop/EFUB/efub5-backend-session/blog/src/main/java/com/practice/blog/account/entity/AccountDocument.java:11: error: cannot find symbol
+@Document("efubblog")
+ ^
+  symbol: class Document
+4 errors
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':compileJava'.
+> Compilation failed; see the compiler error output for details.
+
+* Try:
+> Run with --info option to get more log output.
+> Run with --scan to get full insights.
+
+BUILD FAILED in 2s
+1 actionable task: 1 executed
