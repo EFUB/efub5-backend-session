@@ -21,13 +21,11 @@ import java.util.Set;
 @Service
 @RequiredArgsConstructor
 public class TokenProvider {
+
     // application.yml에 저장한 jwt값 가져오기
-    @Value("${jwt.secret.Key}")
-    private String secretKey;
 
     // 토큰 만료시간 설정
-    private static Long accessTokenExpiration = 1000*60*60L; // 1시간 = 1000(ms->s) * 60(s->m) * 60(m->h)
-    private static Long refreshTokenExpiration = 1000*60*60*25*14L; // 2주 = 1000(ms->s) * 60(s->m) * 60(m->h) * 24(h->하루) * 14(2주)
+
 
     // 토큰에 포함할 기본 정보와 클레임 키값 설정
     private static final String AUTH_CLAIM = "auth";
@@ -39,49 +37,19 @@ public class TokenProvider {
      * AccessToken 생성 메소드
      * 사용자 이메일 정보를 포함해 AccessToken 생성
      */
-    public String createAccessToken(Account account){
-        Date now = new Date();
-        return Jwts.builder()
-                // 헤더 - 토큰 타입: JWT
-                .setHeaderParam(Header.TYPE, Header.JWT_TYPE)
-                // 내용 - 토큰이 발급된 시간: 현재 시간
-                .setIssuedAt(now)
-                // 내용 - 토큰 만료 시간: expiredMs 변수값
-                .setExpiration(new Date(now.getTime() + accessTokenExpiration))
-                // 내용 - 토큰 제목: 사용자 이메일
-                .setSubject(account.getEmail())
-                // 서명 - 시크릿키와 함께 해시값을 HS256 방식으로 암호화
-                .signWith(SignatureAlgorithm.HS256, secretKey)
-                .compact();
-    }
+
 
     /**
      * RefreshToken 생성 메소드
      */
-    public String createRefreshToken(Account account){
-        Date now = new Date();
-        return Jwts.builder()
-                // 헤더 - 토큰 타입: JWT
-                .setHeaderParam(Header.TYPE, Header.JWT_TYPE)
-                // 내용 - 토큰이 발급된 시간: 현재 시간
-                .setIssuedAt(now)
-                // 내용 - 토큰 만료 시간: expiredMs 변수값
-                .setExpiration(new Date(now.getTime() + refreshTokenExpiration))
-                // 내용 - 토큰 제목: 사용자 이메일
-                .setSubject(account.getEmail())
-                // 서명 - 시크릿키와 함께 해시값을 HS256 방식으로 암호화
-                .signWith(SignatureAlgorithm.HS256, secretKey)
-                .compact();
-    }
+
 
     /**
      * Redis에 리프레시 토큰을 저장하는 메소드
      * key: 사용자 ID, alue: 리프레시 토큰
      * 리프레시토큰 만료 시간(refreshTokenExpiration)을 만료시간으로 정해 자동으로 삭제되도록 설정
      */
-    public void saveRefreshToken(Long userId, String refreshToken){
-        redisTemplate.opsForValue().set(userId.toString(),refreshToken, Duration.ofMillis(refreshTokenExpiration));
-    }
+
 
     /**
      * AccessToken에서 email 추출
