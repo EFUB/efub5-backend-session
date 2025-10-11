@@ -34,7 +34,7 @@ class PostControllerTest {
 
     @BeforeEach
     void seed() {
-        Account account = new Account("efub@example.com", "testpw", "efub");
+        Account account = new Account("efub@example.com", "password", "efub");
         accountsRepository.save(account);
     }
 
@@ -43,15 +43,15 @@ class PostControllerTest {
     void createPost_and_persist() throws Exception {
         // given
         String body = """
-          {"title":"제목","content":"내용은다섯글자이상","accountId":1}
-        """;
+                {"title":"제목","content":"내용은다섯글자이상","accountId":1}
+                """;
 
         // when
         MvcResult res = mockMvc.perform(post("/posts")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(body))
                 .andExpect(status().isCreated())
-                .andExpect(header().string("Location", matchesPattern("^/posts/\\d+$")))
+                .andExpect(header().string("Location",matchesPattern("^/posts/\\d+$")))
                 .andReturn();
 
         // then
