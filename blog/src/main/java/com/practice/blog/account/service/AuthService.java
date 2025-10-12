@@ -7,7 +7,7 @@ import com.practice.blog.global.jwt.TokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional; // <--- 바로 이것입니다!
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional
