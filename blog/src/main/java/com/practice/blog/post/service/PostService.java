@@ -49,12 +49,7 @@ public class PostService {
     }
 
     // 검색
-    @Transactional(readOnly = true)
-    public List<PostSearchResponseDto> searchPost(String keyword, String writerNickname){
-        return postRepository.search(keyword, writerNickname).stream()
-                .map(PostSearchResponseDto::new)
-                .toList();
-    }
+
 
     @Transactional
     public void updatePostContent(Long postId, PostUpdateRequest request, Long accountId, String password) {
