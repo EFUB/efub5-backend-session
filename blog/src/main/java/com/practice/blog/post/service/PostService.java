@@ -10,6 +10,7 @@ import com.practice.blog.post.dto.request.PostCreateRequest;
 import com.practice.blog.post.dto.request.PostUpdateRequest;
 import com.practice.blog.post.dto.response.PostResponse;
 import com.practice.blog.post.dto.response.PostListResponse;
+import com.practice.blog.post.dto.response.PostSearchResponseDto;
 import com.practice.blog.post.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -45,6 +46,14 @@ public class PostService {
         List<PostSummary> postSummaries = postRepository.findAllByOrderByCreatedAtDesc().stream()
                 .map(PostSummary::from).toList();
         return new PostListResponse(postSummaries, postRepository.count());
+    }
+
+    // 검색
+    @Transactional(readOnly = true)
+    public List<PostSearchResponseDto> searchPost(String keyword, String writerNickname){
+        return postRepository.search(keyword, writerNickname).stream()
+                .map(PostSearchResponseDto::new)
+                .toList();
     }
 
     @Transactional
